@@ -165,7 +165,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* FIX #4: hero-roles clamp מתוקן למובייל */
     .hero-roles {
       font-size: clamp(0.9rem, 4vw, 1.05rem);
       color: var(--muted);
@@ -173,7 +172,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* FIX #2: hero-scroll מרכוז נכון ב-RTL */
     .hero-scroll {
       position: absolute;
       bottom: 2rem;
@@ -232,9 +230,7 @@
     }
 
     /* ── ABOUT ── */
-    #about {
-      border-top: 1px solid var(--border);
-    }
+    #about { border-top: 1px solid var(--border); }
 
     .about-grid {
       display: grid;
@@ -288,12 +284,8 @@
     }
 
     /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
+    .projects-grid { display: grid; gap: 1.5rem; }
 
-    /* FIX #1: סדר עמודות נכון ב-RTL — מספר בימין, תוכן במרכז, חץ בשמאל */
     .project-card {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -320,14 +312,9 @@
       min-width: 2.5rem;
       text-align: center;
       transition: color 0.25s;
-      order: 1; /* ימין — ראשון ב-RTL */
     }
 
     .project-card:hover .project-num { color: var(--accent); }
-
-    .project-info {
-      order: 2;
-    }
 
     .project-info h3 {
       font-size: 1.2rem;
@@ -343,24 +330,36 @@
       margin-bottom: 0.6rem;
     }
 
+    .project-status {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.6rem;
+      border: 1px solid;
+      letter-spacing: 0.08em;
+      margin-right: 0.5rem;
+    }
+
+    .status-distributed { border-color: #4caf50; color: #4caf50; }
+    .status-post       { border-color: var(--accent); color: var(--accent); }
+    .status-festival   { border-color: #888; color: #888; }
+
     .project-desc {
       font-size: 0.9rem;
       color: var(--muted);
       line-height: 1.6;
-      max-width: 60ch;
+      max-width: 65ch;
+      margin-top: 0.5rem;
     }
 
-    /* FIX #1: חץ בשמאל */
     .project-arrow {
       font-size: 1.5rem;
       color: var(--muted);
       transition: color 0.25s, transform 0.25s;
-      order: 3;
     }
 
     .project-card:hover .project-arrow {
       color: var(--accent);
-      transform: translateX(4px); /* FIX: כיוון נכון ב-RTL */
+      transform: translateX(4px);
     }
 
     /* ── VIDEO GRID ── */
@@ -423,29 +422,27 @@
       background: var(--accent2);
     }
 
-    /* FIX #3: הסרת margin-right שגורם לאי-מרכוז ב-RTL */
     .play-btn svg {
       width: 18px;
       height: 18px;
       fill: #0a0a0a;
-      margin-inline-start: 2px; /* דחיפה אופטית נכונה בכל כיוון */
+      margin-inline-start: 2px;
     }
 
-    /* ── PROJECT CARD PLACEHOLDER ── */
-    /* FIX #6: רקע gradient לכרטיסיות ללא תמונה */
-    .project-card-bg {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card-bg::before {
-      content: '';
+    /* ── VIDEO TITLE OVERLAY ── */
+    .video-title-overlay {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a1208 0%, #0d0d0d 100%);
-      opacity: 0.5;
-      pointer-events: none;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      padding: 1.5rem 0.8rem 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 0.25s;
     }
+
+    .video-thumb:hover .video-title-overlay { opacity: 1; }
 
     /* ── CONTACT ── */
     #contact {
@@ -464,6 +461,30 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-item a {
+      color: var(--accent2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
 
     .contact-btn {
       display: inline-block;
@@ -484,12 +505,29 @@
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       color: #444;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       border-top: 1px solid var(--border);
     }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-social a {
+      color: #555;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: var(--accent); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -498,21 +536,18 @@
       .hero { padding: 0 1.5rem 4rem; }
       section { padding: 4rem 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .project-card {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-      }
-      .project-num { font-size: 1.5rem; order: unset; }
-      .project-info { order: unset; }
+      .project-card { grid-template-columns: 1fr; gap: 0.8rem; }
+      .project-num { font-size: 1.5rem; }
       .project-arrow { display: none; }
       .video-grid { grid-template-columns: 1fr 1fr; }
+      .contact-details { gap: 1.5rem; }
     }
 
-    /* FIX #5: המבורגר במקום הסתרת ניווט */
     @media (max-width: 480px) {
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .video-grid { grid-template-columns: 1fr; }
+      .contact-details { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -536,9 +571,7 @@
       <li><a href="#contact">צור קשר</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="תפריט" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
@@ -558,9 +591,8 @@
     <div class="about-grid">
       <div>
         <div class="about-text">
-          <p>נעים להכיר. שמי יהודה עייאש, מפיק, יוצר ועורך סרטים, סרטוני תדמית ופרסומות. כן, הרבה כובעים.</p>
-          <p>בנוסף, אני מייסד ומנהל פסטיבל קולנוע <strong>רָצוֹא</strong> — פסטיבל שעוסק בחיפוש אחר הא-לוהי והנשגב בחיינו.</p>
-          <p>בוגר לימודי קולנוע בבית הספר לאומנויות הקול והמסך במכללת ספיר.</p>
+          <p><strong>יהודה עייאש</strong>, מפיק, יוצר ועורך סרטים, סרטוני תדמית ופרסומות. מייסד ומנהל פסטיבל קולנוע <strong>רָצוֹא</strong> — פסטיבל שעוסק בחיפוש אחר הא-לוהי והנשגב בחיינו.</p>
+          <p>בוגר לימודי קולנוע בבית הספר לאומנויות הקול והמסך במכללת ספיר, עם קרוב ל-10 שנות ניסיון בהפקה. מתמקד בסרטים המחפשים לקדם ולתקן את המציאות אפילו בקטנה.</p>
         </div>
         <div class="about-tags">
           <span class="tag">הפקה</span>
@@ -585,11 +617,39 @@
     <div class="divider"></div>
     <div class="projects-grid">
 
-      <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
+      <div class="project-card">
         <div class="project-num">01</div>
         <div class="project-info">
+          <h3>דבר אחד בטוח</h3>
+          <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-distributed">בהפצה</span></div>
+          <div class="project-desc">אלמה בטוחה לחלוטין שאחותה נמצאת בסכנה. היא מגיעה באמצע הלילה לבית אימה כדי לשכנע אותה לעשות ביטוח בריאות — ונתקלת בחומת התנגדות. הסרט צולל אל השפעות ה-OCD על נפשו של האדם.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: מיכל מאיר דבירי</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <div class="project-info">
+          <h3>הבוקר שלי</h3>
+          <div class="project-meta">עלילתי · 2024 · 20 דקות · <span class="project-status status-distributed">בהפצה</span></div>
+          <div class="project-desc">כל מה שדנה, אמנית בנפשה, רוצה הבוקר — לארגן את בנה בן ה-7 לבית הספר במינימום חיכוך. כשהשלכות האווירה המאיימת מגיעות לבנה, היא מחליטה לראשונה לעמוד מול בעלה.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: ליאב תמוז</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
+        <div class="project-num">03</div>
+        <div class="project-info">
           <h3>קינת יהונתן</h3>
-          <div class="project-meta">עלילתי · 2020 · 17 דקות</div>
+          <div class="project-meta">עלילתי · 2020 · 17 דקות · <span class="project-status status-festival">הופץ</span></div>
           <div class="project-desc">יהונתן הוא סוכן שב"כ, בנו של ראש הארגון. ערב חנוכה שהופך לחקירה שתקרע אותו בין נאמנותו לאביו לחברותו העמוקה עם דוד.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: יהודה עייאש</span>
@@ -599,11 +659,66 @@
         <div class="project-arrow">→</div>
       </a>
 
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <div class="project-info">
+          <h3>חצי פגישה</h3>
+          <div class="project-meta">עלילתי · 2025 · 23 דקות · <span class="project-status status-post">בפוסט</span></div>
+          <div class="project-desc">צבי, בחור ישיבה חרדי, מגיע ללשכת הגיוס לקבל דיחוי ונקלע לתסבוכת בירוקרטית. המצב מאלץ אותו להישאר עם החיילת כרמל — ותשחץ משותף הופך למתווך בין שני עולמות.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: עדן אביטבול</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">05</div>
+        <div class="project-info">
+          <h3>אין שום ייאוש</h3>
+          <div class="project-meta">עלילתי · 2026 · 12 דקות · <span class="project-status status-post">בפוסט</span></div>
+          <div class="project-desc">יונה, בחור ישיבה בן 17, עומד בכותל ומתחנן שיעזור לו להפסיק להימשך לגברים. שם הוא פוגש את אריה — שמנסה לעודד אותו, אך גם מעמיד אותו בניסיון.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">בימוי: רועי א. פרידן</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">06</div>
+        <div class="project-info">
+          <h3>אבדה</h3>
+          <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-post">בפוסט</span></div>
+          <div class="project-desc">במהלך טיול מדברי, יוחאי מאבד את התפילין שלו ומפרש זאת כעונש משמיים. הוא יוצא לחפש אותן במעמקי השממה — בזמן ששיטפון הרסני מאיים על חייו.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">07</div>
+        <div class="project-info">
+          <h3>Heartbreak</h3>
+          <div class="project-meta">היברידי · 2025 · 90 דקות · <span class="project-status status-distributed">בהפצה</span></div>
+          <div class="project-desc">מה-7 באוקטובר 2023 עד ה-7 באוקטובר 2024 — דמות שותקת ופואטית נאלצת להגר עם משפחתה. בהשראת באסטר קיטון ומרסו, שחור-לבן, פנטומימה וריקוד — ללא מילים, ולכן א-פוליטי.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: ג'סיקה ואטורי-דמבו</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
       <a class="project-card" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
-        <div class="project-num">02</div>
+        <div class="project-num">08</div>
         <div class="project-info">
           <h3>שש תמונות לרצח</h3>
-          <div class="project-meta">עלילתי · 2020 · 50 דקות</div>
+          <div class="project-meta">עלילתי · 2020 · 50 דקות · <span class="project-status status-festival">הופץ</span></div>
           <div class="project-desc">בשבת לפנות בוקר, 17 באוקטובר 2009, פרץ גבר לדירה בראשון לציון ורצח שישה מבני משפחה. כך מתנהל משפטו של הנאשם — שש תמונות במחזה אמיתי.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">בימוי: יובל בר-און</span>
@@ -612,6 +727,48 @@
         </div>
         <div class="project-arrow">→</div>
       </a>
+
+      <div class="project-card">
+        <div class="project-num">09</div>
+        <div class="project-info">
+          <h3>חי ונעלם</h3>
+          <div class="project-meta">עלילתי · 2023 · 15 דקות · <span class="project-status status-distributed">בהפצה</span></div>
+          <div class="project-desc">איתן הולך עם מורו אליהו הפייטן להופיע באירוע. בהשפעת הקהל מתפתה לסלסל — ומורו מאוכזב. בסוף, איתן שר עם מורו בשקט, כשזה אינו מבחין בו.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: ניר מימרן</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">10</div>
+        <div class="project-info">
+          <h3>חלקים כהים</h3>
+          <div class="project-meta">אנימציה · 2023 · 7 דקות · <span class="project-status status-distributed">בהפצה</span></div>
+          <div class="project-desc">ניסיונו של אורי לשחק דמקה מתנגש עם הצורך האובססיבי של אימו להזין אותו. מערכת יחסים מורכבת בצל הדיכאון, בישראל בשנותיה הראשונות.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: עמית קרני</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">11</div>
+        <div class="project-info">
+          <h3>פשוט נעלם</h3>
+          <div class="project-meta">עלילתי · 2022 · 25 דקות · <span class="project-status status-festival">הופץ</span></div>
+          <div class="project-desc">דנא אמורה להתחתן בעוד כמה ימים. בשיחה אחת היא מגלה שרמי עזב את הארץ. היא נוסעת לדירתו בחיפה — כדי להבין.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: עביר ראשד</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
 
     </div>
 
@@ -658,7 +815,6 @@
   <!-- EDITING -->
   <div class="video-section-bg">
   <section id="editing">
-    <!-- FIX #6: הסרת section-title כפול — נשאר רק section-label -->
     <div class="section-label">/ עריכה</div>
     <div class="divider"></div>
 
@@ -666,12 +822,14 @@
       <div class="section-label" style="margin-bottom:1.2rem">/ סרטים</div>
       <div class="video-grid">
         <a class="video-thumb" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/PDKQM-wYCyE/mqdefault.jpg" alt="עריכה" loading="lazy" />
+          <img src="https://img.youtube.com/vi/PDKQM-wYCyE/mqdefault.jpg" alt="קינת יהונתן" loading="lazy" />
           <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          <div class="video-title-overlay">קינת יהונתן</div>
         </a>
         <a class="video-thumb" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/qN3mE6xUw-E/mqdefault.jpg" alt="עריכה" loading="lazy" />
+          <img src="https://img.youtube.com/vi/qN3mE6xUw-E/mqdefault.jpg" alt="שש תמונות לרצח" loading="lazy" />
           <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          <div class="video-title-overlay">שש תמונות לרצח</div>
         </a>
         <a class="video-thumb" href="https://youtu.be/QDCAFLKF03E" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/QDCAFLKF03E/mqdefault.jpg" alt="עריכה" loading="lazy" />
@@ -730,11 +888,26 @@
     <h2 class="section-title">בואו נעבוד יחד</h2>
     <div class="divider"></div>
     <p class="contact-tagline">מחפשים מפיק, עורך, או שניהם? בואו נדבר.</p>
-    <a class="contact-btn" href="mailto:info@hiboo-productions.com">צור קשר</a>
+    <div class="contact-details">
+      <div class="contact-item">
+        <span>📞</span>
+        <a href="tel:0526914780">052-6914780</a>
+      </div>
+      <div class="contact-item">
+        <span>✉️</span>
+        <a href="mailto:hibooproductions@gmail.com">hibooproductions@gmail.com</a>
+      </div>
+    </div>
+    <a class="contact-btn" href="mailto:hibooproductions@gmail.com">שלח הודעה</a>
   </section>
 
-  <!-- FIX #2: שנת footer מתוקנת ל-2026 -->
+  <!-- FOOTER -->
   <footer>
+    <div class="footer-social">
+      <a href="https://www.imdb.com/name/nm10905471/" target="_blank" rel="noopener">IMDb</a>
+      <a href="https://www.facebook.com/yehuda.aiache" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.youtube.com/@yehudaaiache2726" target="_blank" rel="noopener">YouTube</a>
+    </div>
     © 2026 HIBOO Productions · יהודה עייאש · כל הזכויות שמורות
   </footer>
 
@@ -753,7 +926,6 @@
       btn.classList.remove('open');
     }
 
-    // סגירת תפריט בלחיצה מחוץ לאזור
     document.getElementById('navOverlay').addEventListener('click', function(e) {
       if (e.target === this) closeMenu();
     });
