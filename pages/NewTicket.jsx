@@ -1,59 +1,79 @@
-import { useState, useRef } from "react";
-import { Ticket } from "../api/entities";
-import { createGithubIssue } from "../api/backendFunctions";
-import { uploadFile } from "../api/storage";
+import { useState } from "react";
 
 const GOLD = "#c9a84c";
+const API_BASE = "https://avrahams-developer-7c30c73a.base44.app/functions";
 
 export default function NewTicket() {
-  const titleRef = useRef();
-  const descRef = useRef();
   const [priority, setPriority] = useState("רגילה");
-  const [files, setFiles] = useState([]);
+  const [fileNames, setFileNames] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [issueUrl, setIssueUrl] = useState("");
   const [error, setError] = useState("");
 
   const handleFileChange = (e) => {
-    setFiles(Array.from(e.target.files));
+    setFileNames(Array.from(e.target.files).map(f => f.name));
   };
 
-  const uploadFiles = async () => {
-    const urls = [];
-    for (const file of files) {
-      const { file_url } = await uploadFile(file);
-      if (file_url) urls.push(file_url);
-    }
-    return urls;
+  const uploadFile = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch(`https://base44.app/api/apps/69b9d2a219ee88eeb7697c80/files/upload/public`, {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) throw new Error("upload failed");
+    const data = await res.json();
+    return data.file_url;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const title = titleRef.current?.value?.trim();
-    const description = descRef.current?.value?.trim();
-    if (!title) { setError("חסרה כותרת"); return; }
+    const titleEl = e.target.querySelector('[name="title"]');
+    const descEl = e.target.querySelector('[name="description"]');
+    const filesEl = e.target.querySelector('[name="files"]');
+
+    const title = titleEl?.value?.trim() || "";
+    const description = descEl?.value?.trim() || "";
+    const files = filesEl?.files ? Array.from(filesEl.files) : [];
+
+    if (!title) {
+      setError("חסרה כותרת");
+      return;
+    }
+
     setError("");
     setUploading(true);
+
     try {
-      let attachments = [];
-      if (files.length > 0) {
-        attachments = await uploadFiles();
+      // Upload files first
+      const attachments = [];
+      for (const file of files) {
+        try {
+          const url = await uploadFile(file);
+          attachments.push(url);
+        } catch {}
       }
-      const ticket = await Ticket.create({
-        title,
-        description,
-        priority,
-        attachments,
-        status: "פתוח",
+
+      // Submit to backend function
+      const res = await fetch(`${API_BASE}/submitTicket`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description, priority, attachments }),
       });
-      const result = await createGithubIssue({ ticket_id: ticket.id });
-      setIssueUrl(result.issue_url);
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        throw new Error(data.error || "שגיאת שרת");
+      }
+
+      setIssueUrl(data.issue_url);
       setSubmitted(true);
     } catch (err) {
-      setError("משהו השתבש, נסה שוב");
-      console.error(err);
+      setError("שגיאה: " + err.message);
     }
+
     setUploading(false);
   };
 
@@ -68,10 +88,11 @@ export default function NewTicket() {
           <p style={{ color: "#aaa", marginBottom: 24 }}>הצוות הטכני קיבל את הטיקט ויחזור אליך בהקדם.</p>
           {issueUrl && (
             <a href={issueUrl} target="_blank" rel="noreferrer" style={{ color: GOLD, fontSize: 13 }}>
-              צפה בטיקט →
+              צפה בטיקט בגיטהאב →
             </a>
           )}
-          <button onClick={() => { setSubmitted(false); setFiles([]); setIssueUrl(""); if(titleRef.current) titleRef.current.value=""; if(descRef.current) descRef.current.value=""; setPriority("רגילה"); }}
+          <button
+            onClick={() => { setSubmitted(false); setFileNames([]); setIssueUrl(""); setPriority("רגילה"); }}
             style={{ ...styles.btn, marginTop: 24 }}>
             פתח בקשה נוספת
           </button>
@@ -91,20 +112,18 @@ export default function NewTicket() {
           <div style={styles.field}>
             <label style={styles.label}>מה תרצה לשנות? *</label>
             <input
-              ref={titleRef}
+              name="title"
               style={styles.input}
               placeholder='למשל: "שנה את התמונה של הבוקר שלי"'
-              defaultValue=""
             />
           </div>
 
           <div style={styles.field}>
             <label style={styles.label}>תיאור מפורט</label>
             <textarea
-              ref={descRef}
+              name="description"
               style={{ ...styles.input, height: 120, resize: "vertical" }}
               placeholder="הסבר בפירוט מה בדיוק צריך לשנות, להוסיף, או להסיר..."
-              defaultValue=""
             />
           </div>
 
@@ -129,14 +148,21 @@ export default function NewTicket() {
           <div style={styles.field}>
             <label style={styles.label}>קבצים מצורפים (תמונות, מסמכים)</label>
             <label style={styles.fileBtn}>
-              📎 {files.length > 0 ? `${files.length} קבצים נבחרו` : "בחר קבצים"}
-              <input type="file" multiple onChange={handleFileChange} style={{ display: "none" }} accept="image/*,.pdf,.doc,.docx" />
+              📎 {fileNames.length > 0 ? `${fileNames.length} קבצים נבחרו` : "בחר קבצים"}
+              <input
+                name="files"
+                type="file"
+                multiple
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+                accept="image/*,.pdf,.doc,.docx"
+              />
             </label>
-            {files.length > 0 && (
+            {fileNames.length > 0 && (
               <div style={styles.fileList}>
-                {files.map((f, i) => (
+                {fileNames.map((name, i) => (
                   <div key={i} style={styles.fileItem}>
-                    {f.type.startsWith("image/") ? "🖼️" : "📄"} {f.name}
+                    {/\.(jpg|jpeg|png|gif|webp)$/i.test(name) ? "🖼️" : "📄"} {name}
                   </div>
                 ))}
               </div>
@@ -173,90 +199,32 @@ const styles = {
     maxWidth: 520,
     textAlign: "center",
   },
-  logo: {
-    fontSize: "0.75rem",
-    letterSpacing: "0.25em",
-    textTransform: "uppercase",
-    color: GOLD,
-    marginBottom: "1rem",
-  },
-  title: {
-    fontSize: "1.8rem",
-    fontWeight: 700,
-    color: "#e8e8e8",
-    marginBottom: "0.5rem",
-  },
-  sub: {
-    fontSize: "0.95rem",
-    color: "#888",
-    marginBottom: "2rem",
-  },
+  logo: { fontSize: "0.75rem", letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: "1rem" },
+  title: { fontSize: "1.8rem", fontWeight: 700, color: "#e8e8e8", marginBottom: "0.5rem" },
+  sub: { fontSize: "0.95rem", color: "#888", marginBottom: "2rem" },
   form: { textAlign: "right" },
   field: { marginBottom: "1.4rem" },
-  label: {
-    display: "block",
-    fontSize: "0.8rem",
-    color: "#aaa",
-    marginBottom: "0.5rem",
-    letterSpacing: "0.05em",
-  },
+  label: { display: "block", fontSize: "0.8rem", color: "#aaa", marginBottom: "0.5rem", letterSpacing: "0.05em" },
   input: {
-    width: "100%",
-    background: "#181818",
-    border: "1px solid #2a2a2a",
-    color: "#e8e8e8",
-    padding: "0.75rem 1rem",
-    fontSize: "0.95rem",
-    fontFamily: "'Heebo', sans-serif",
-    outline: "none",
-    boxSizing: "border-box",
-    direction: "rtl",
+    width: "100%", background: "#181818", border: "1px solid #2a2a2a", color: "#e8e8e8",
+    padding: "0.75rem 1rem", fontSize: "0.95rem", fontFamily: "'Heebo', sans-serif",
+    outline: "none", boxSizing: "border-box", direction: "rtl",
   },
-  priorityRow: {
-    display: "flex",
-    gap: "0.75rem",
-  },
+  priorityRow: { display: "flex", gap: "0.75rem" },
   priorityBtn: {
-    flex: 1,
-    padding: "0.6rem",
-    border: "1px solid",
-    cursor: "pointer",
-    fontSize: "0.85rem",
-    fontFamily: "'Heebo', sans-serif",
-    transition: "all 0.2s",
+    flex: 1, padding: "0.6rem", border: "1px solid", cursor: "pointer",
+    fontSize: "0.85rem", fontFamily: "'Heebo', sans-serif", transition: "all 0.2s",
   },
   fileBtn: {
-    display: "inline-block",
-    padding: "0.6rem 1.2rem",
-    border: "1px solid #2a2a2a",
-    color: "#888",
-    cursor: "pointer",
-    fontSize: "0.85rem",
-    background: "#181818",
+    display: "inline-block", padding: "0.6rem 1.2rem", border: "1px solid #2a2a2a",
+    color: "#888", cursor: "pointer", fontSize: "0.85rem", background: "#181818",
   },
   fileList: { marginTop: "0.75rem" },
-  fileItem: {
-    fontSize: "0.82rem",
-    color: "#aaa",
-    padding: "0.3rem 0",
-    borderBottom: "1px solid #1e1e1e",
-  },
-  error: {
-    color: "#ef4444",
-    fontSize: "0.85rem",
-    marginBottom: "1rem",
-  },
+  fileItem: { fontSize: "0.82rem", color: "#aaa", padding: "0.3rem 0", borderBottom: "1px solid #1e1e1e" },
+  error: { color: "#ef4444", fontSize: "0.85rem", marginBottom: "1rem", padding: "0.5rem", border: "1px solid #ef444433", background: "#ef444411" },
   btn: {
-    width: "100%",
-    padding: "0.9rem",
-    background: GOLD,
-    color: "#000",
-    border: "none",
-    fontSize: "1rem",
-    fontWeight: 700,
-    fontFamily: "'Heebo', sans-serif",
-    cursor: "pointer",
-    marginTop: "0.5rem",
-    letterSpacing: "0.05em",
+    width: "100%", padding: "0.9rem", background: GOLD, color: "#000", border: "none",
+    fontSize: "1rem", fontWeight: 700, fontFamily: "'Heebo', sans-serif", cursor: "pointer",
+    marginTop: "0.5rem", letterSpacing: "0.05em",
   },
 };
