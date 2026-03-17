@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Ticket } from "../api/entities";
 import { createGithubIssue } from "../api/backendFunctions";
 import { uploadFile } from "../api/storage";
@@ -6,7 +6,9 @@ import { uploadFile } from "../api/storage";
 const GOLD = "#c9a84c";
 
 export default function NewTicket() {
-  const [form, setForm] = useState({ title: "", description: "", priority: "רגילה" });
+  const titleRef = useRef();
+  const descRef = useRef();
+  const [priority, setPriority] = useState("רגילה");
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -28,7 +30,9 @@ export default function NewTicket() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.title.trim()) { setError("חסרה כותרת"); return; }
+    const title = titleRef.current?.value?.trim();
+    const description = descRef.current?.value?.trim();
+    if (!title) { setError("חסרה כותרת"); return; }
     setError("");
     setUploading(true);
     try {
@@ -37,7 +41,9 @@ export default function NewTicket() {
         attachments = await uploadFiles();
       }
       const ticket = await Ticket.create({
-        ...form,
+        title,
+        description,
+        priority,
         attachments,
         status: "פתוח",
       });
@@ -65,7 +71,7 @@ export default function NewTicket() {
               צפה בטיקט →
             </a>
           )}
-          <button onClick={() => { setSubmitted(false); setForm({ title: "", description: "", priority: "רגילה" }); setFiles([]); }}
+          <button onClick={() => { setSubmitted(false); setFiles([]); setIssueUrl(""); if(titleRef.current) titleRef.current.value=""; if(descRef.current) descRef.current.value=""; setPriority("רגילה"); }}
             style={{ ...styles.btn, marginTop: 24 }}>
             פתח בקשה נוספת
           </button>
@@ -85,20 +91,20 @@ export default function NewTicket() {
           <div style={styles.field}>
             <label style={styles.label}>מה תרצה לשנות? *</label>
             <input
+              ref={titleRef}
               style={styles.input}
               placeholder='למשל: "שנה את התמונה של הבוקר שלי"'
-              value={form.title}
-              onChange={e => setForm({ ...form, title: e.target.value })}
+              defaultValue=""
             />
           </div>
 
           <div style={styles.field}>
             <label style={styles.label}>תיאור מפורט</label>
             <textarea
+              ref={descRef}
               style={{ ...styles.input, height: 120, resize: "vertical" }}
               placeholder="הסבר בפירוט מה בדיוק צריך לשנות, להוסיף, או להסיר..."
-              value={form.description}
-              onChange={e => setForm({ ...form, description: e.target.value })}
+              defaultValue=""
             />
           </div>
 
@@ -107,12 +113,12 @@ export default function NewTicket() {
             <div style={styles.priorityRow}>
               {["נמוכה", "רגילה", "דחוף"].map(p => (
                 <button type="button" key={p}
-                  onClick={() => setForm({ ...form, priority: p })}
+                  onClick={() => setPriority(p)}
                   style={{
                     ...styles.priorityBtn,
-                    borderColor: form.priority === p ? priorityColor[p] : "#333",
-                    color: form.priority === p ? priorityColor[p] : "#888",
-                    background: form.priority === p ? `${priorityColor[p]}11` : "transparent",
+                    borderColor: priority === p ? priorityColor[p] : "#333",
+                    color: priority === p ? priorityColor[p] : "#888",
+                    background: priority === p ? `${priorityColor[p]}11` : "transparent",
                   }}>
                   {p === "דחוף" ? "🔴" : p === "רגילה" ? "🟡" : "🟢"} {p}
                 </button>
@@ -139,7 +145,7 @@ export default function NewTicket() {
 
           {error && <div style={styles.error}>{error}</div>}
 
-          <button type="submit" style={styles.btn} disabled={uploading}>
+          <button type="submit" style={{ ...styles.btn, opacity: uploading ? 0.7 : 1 }} disabled={uploading}>
             {uploading ? "שולח..." : "שלח בקשה →"}
           </button>
         </form>
@@ -222,7 +228,7 @@ const styles = {
   fileBtn: {
     display: "inline-block",
     padding: "0.6rem 1.2rem",
-    border: `1px solid #2a2a2a`,
+    border: "1px solid #2a2a2a",
     color: "#888",
     cursor: "pointer",
     fontSize: "0.85rem",
