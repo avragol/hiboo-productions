@@ -70,6 +70,55 @@
 
     .nav-links a:hover { color: var(--accent2); }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      transition: all 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE OVERLAY MENU ── */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(10,10,10,0.97);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .nav-overlay.open { display: flex; }
+
+    .nav-overlay a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .nav-overlay a:hover { color: var(--accent); }
+
     /* ── HERO ── */
     .hero {
       min-height: 100dvh;
@@ -116,13 +165,15 @@
       margin-bottom: 1.5rem;
     }
 
+    /* FIX #4: hero-roles clamp מתוקן למובייל */
     .hero-roles {
-      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      font-size: clamp(0.9rem, 4vw, 1.05rem);
       color: var(--muted);
       font-weight: 400;
       letter-spacing: 0.08em;
     }
 
+    /* FIX #2: hero-scroll מרכוז נכון ב-RTL */
     .hero-scroll {
       position: absolute;
       bottom: 2rem;
@@ -242,6 +293,7 @@
       gap: 1.5rem;
     }
 
+    /* FIX #1: סדר עמודות נכון ב-RTL — מספר בימין, תוכן במרכז, חץ בשמאל */
     .project-card {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -268,9 +320,14 @@
       min-width: 2.5rem;
       text-align: center;
       transition: color 0.25s;
+      order: 1; /* ימין — ראשון ב-RTL */
     }
 
     .project-card:hover .project-num { color: var(--accent); }
+
+    .project-info {
+      order: 2;
+    }
 
     .project-info h3 {
       font-size: 1.2rem;
@@ -293,15 +350,17 @@
       max-width: 60ch;
     }
 
+    /* FIX #1: חץ בשמאל */
     .project-arrow {
       font-size: 1.5rem;
       color: var(--muted);
       transition: color 0.25s, transform 0.25s;
+      order: 3;
     }
 
     .project-card:hover .project-arrow {
       color: var(--accent);
-      transform: translateX(-4px);
+      transform: translateX(4px); /* FIX: כיוון נכון ב-RTL */
     }
 
     /* ── VIDEO GRID ── */
@@ -364,11 +423,28 @@
       background: var(--accent2);
     }
 
+    /* FIX #3: הסרת margin-right שגורם לאי-מרכוז ב-RTL */
     .play-btn svg {
       width: 18px;
       height: 18px;
       fill: #0a0a0a;
-      margin-right: -2px; /* optical center */
+      margin-inline-start: 2px; /* דחיפה אופטית נכונה בכל כיוון */
+    }
+
+    /* ── PROJECT CARD PLACEHOLDER ── */
+    /* FIX #6: רקע gradient לכרטיסיות ללא תמונה */
+    .project-card-bg {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a1208 0%, #0d0d0d 100%);
+      opacity: 0.5;
+      pointer-events: none;
     }
 
     /* ── CONTACT ── */
@@ -426,18 +502,29 @@
         grid-template-columns: 1fr;
         gap: 0.8rem;
       }
-      .project-num { font-size: 1.5rem; }
+      .project-num { font-size: 1.5rem; order: unset; }
+      .project-info { order: unset; }
       .project-arrow { display: none; }
       .video-grid { grid-template-columns: 1fr 1fr; }
     }
 
+    /* FIX #5: המבורגר במקום הסתרת ניווט */
     @media (max-width: 480px) {
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       .video-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- MOBILE OVERLAY MENU -->
+  <div class="nav-overlay" id="navOverlay">
+    <a href="#about" onclick="closeMenu()">אודות</a>
+    <a href="#production" onclick="closeMenu()">הפקה</a>
+    <a href="#editing" onclick="closeMenu()">עריכה</a>
+    <a href="#contact" onclick="closeMenu()">צור קשר</a>
+  </div>
 
   <!-- NAV -->
   <nav>
@@ -448,6 +535,11 @@
       <li><a href="#editing">עריכה</a></li>
       <li><a href="#contact">צור קשר</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="תפריט" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -504,7 +596,7 @@
             <span class="tag">הפקה: יהודה עייאש, אור כהן</span>
           </div>
         </div>
-        <div class="project-arrow">←</div>
+        <div class="project-arrow">→</div>
       </a>
 
       <a class="project-card" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
@@ -518,7 +610,7 @@
             <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
-        <div class="project-arrow">←</div>
+        <div class="project-arrow">→</div>
       </a>
 
     </div>
@@ -566,8 +658,8 @@
   <!-- EDITING -->
   <div class="video-section-bg">
   <section id="editing">
+    <!-- FIX #6: הסרת section-title כפול — נשאר רק section-label -->
     <div class="section-label">/ עריכה</div>
-    <h2 class="section-title">עריכה</h2>
     <div class="divider"></div>
 
     <div style="margin-bottom:3rem">
@@ -638,12 +730,34 @@
     <h2 class="section-title">בואו נעבוד יחד</h2>
     <div class="divider"></div>
     <p class="contact-tagline">מחפשים מפיק, עורך, או שניהם? בואו נדבר.</p>
-    <a class="contact-btn" href="mailto:contact@hiboo.co.il">צור קשר</a>
+    <a class="contact-btn" href="mailto:info@hiboo-productions.com">צור קשר</a>
   </section>
 
+  <!-- FIX #2: שנת footer מתוקנת ל-2026 -->
   <footer>
-    © 2024 HIBOO Productions · יהודה עייאש · כל הזכויות שמורות
+    © 2026 HIBOO Productions · יהודה עייאש · כל הזכויות שמורות
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const overlay = document.getElementById('navOverlay');
+      const btn = document.getElementById('hamburger');
+      overlay.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+
+    function closeMenu() {
+      const overlay = document.getElementById('navOverlay');
+      const btn = document.getElementById('hamburger');
+      overlay.classList.remove('open');
+      btn.classList.remove('open');
+    }
+
+    // סגירת תפריט בלחיצה מחוץ לאזור
+    document.getElementById('navOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeMenu();
+    });
+  </script>
 
 </body>
 </html>
