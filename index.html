@@ -195,6 +195,48 @@
       background: linear-gradient(to bottom, var(--muted), transparent);
     }
 
+
+    /* ── PROJECT THUMBNAIL ── */
+    .project-thumb {
+      width: 120px;
+      height: 68px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: border-color 0.25s;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover .project-thumb { border-color: var(--accent); }
+    .project-card:hover .project-thumb img { opacity: 1; }
+
+    /* ── ABOUT PHOTO ── */
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    @media (max-width: 768px) {
+      .project-thumb { width: 80px; height: 45px; }
+    }
+
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(6px); }
@@ -290,7 +332,7 @@
       background: var(--bg2);
       border: 1px solid var(--border);
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: auto auto 1fr auto;
       align-items: center;
       gap: 2rem;
       padding: 2rem 2.5rem;
@@ -603,9 +645,14 @@
           <span class="tag">פרסומות</span>
         </div>
       </div>
-      <div class="about-highlight">
+      <div>
+        <div class="about-photo">
+          <img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/85904a374_about_yehuda.jpg" alt="יהודה עייאש" loading="lazy" />
+        </div>
+        <div class="about-highlight">
         <h3>פסטיבל רָצוֹא</h3>
         <p>פסטיבל קולנוע ייחודי העוסק בחיפוש אחר הא-לוהי והנשגב בחיינו. מייסד ומנהל הפסטיבל.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -633,6 +680,7 @@
 
       <div class="project-card">
         <div class="project-num">02</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/b7362776d_02_haboker_sheli.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>הבוקר שלי</h3>
           <div class="project-meta">עלילתי · 2024 · 20 דקות · <span class="project-status status-distributed">בהפצה</span></div>
@@ -647,6 +695,7 @@
 
       <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
         <div class="project-num">03</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/a8f4c2a97_01_kinot_yehonatan.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>קינת יהונתן</h3>
           <div class="project-meta">עלילתי · 2020 · 17 דקות · <span class="project-status status-festival">הופץ</span></div>
@@ -675,6 +724,7 @@
 
       <div class="project-card">
         <div class="project-num">05</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/6338baad9_05_ein_shum_yiush.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>אין שום ייאוש</h3>
           <div class="project-meta">עלילתי · 2026 · 12 דקות · <span class="project-status status-post">בפוסט</span></div>
@@ -689,6 +739,7 @@
 
       <div class="project-card">
         <div class="project-num">06</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/2dad92e35_06_aveda.png" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>אבדה</h3>
           <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-post">בפוסט</span></div>
@@ -702,6 +753,7 @@
 
       <div class="project-card">
         <div class="project-num">07</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/8f561282e_07_heartbreak.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>Heartbreak</h3>
           <div class="project-meta">היברידי · 2025 · 90 דקות · <span class="project-status status-distributed">בהפצה</span></div>
@@ -716,6 +768,7 @@
 
       <a class="project-card" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
         <div class="project-num">08</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/80e5917ea_08_shesh_tmunot.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>שש תמונות לרצח</h3>
           <div class="project-meta">עלילתי · 2020 · 50 דקות · <span class="project-status status-festival">הופץ</span></div>
@@ -744,6 +797,7 @@
 
       <div class="project-card">
         <div class="project-num">10</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/5c8f42437_10_halakhim_kehim.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>חלקים כהים</h3>
           <div class="project-meta">אנימציה · 2023 · 7 דקות · <span class="project-status status-distributed">בהפצה</span></div>
@@ -758,6 +812,7 @@
 
       <div class="project-card">
         <div class="project-num">11</div>
+        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/abeae896e_11_pashut_nealem.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
           <h3>פשוט נעלם</h3>
           <div class="project-meta">עלילתי · 2022 · 25 דקות · <span class="project-status status-festival">הופץ</span></div>
