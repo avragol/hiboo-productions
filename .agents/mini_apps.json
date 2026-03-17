@@ -1,0 +1,12 @@
+{
+  "app_id": "69b9d2a219ee88eeb7697c80",
+  "slug": "avrahams-developer-app-b7697c80",
+  "pages": {
+    "NewTicket": {
+      "title": "NewTicket"
+    },
+    "TicketBoard": {
+      "title": "TicketBoard"
+    }
+  }
+}
