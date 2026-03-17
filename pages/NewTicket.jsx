@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Ticket } from "../api/entities";
 import { createGithubIssue } from "../api/backendFunctions";
+import { uploadFile } from "../api/storage";
 
 const GOLD = "#c9a84c";
 
@@ -19,16 +20,8 @@ export default function NewTicket() {
   const uploadFiles = async () => {
     const urls = [];
     for (const file of files) {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await fetch(`/api/apps/${window.__APP_ID__ || "69b94c39dc1f32607c30c73a"}/files/upload/public`, {
-        method: "POST",
-        body: formData,
-      });
-      if (res.ok) {
-        const data = await res.json();
-        urls.push(data.file_url);
-      }
+      const { file_url } = await uploadFile(file);
+      if (file_url) urls.push(file_url);
     }
     return urls;
   };
