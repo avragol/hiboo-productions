@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>יהודה עייאש | HIBOO Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #181818;
+      --accent: #c9a84c;
+      --accent2: #e8c97a;
+      --text: #e8e8e8;
+      --muted: #888;
+      --border: #2a2a2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--accent2); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 3rem 5rem;
+      position: relative;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1208 60%, #0a0a0a 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 30%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 70%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-company {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-roles {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      color: #c8c8c8;
+      line-height: 1.9;
+    }
+
+    .about-text p + p { margin-top: 1.2rem; }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--accent2);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.85rem;
+      letter-spacing: 0.08em;
+    }
+
+    .about-highlight {
+      background: var(--bg3);
+      border-right: 3px solid var(--accent);
+      padding: 2rem;
+    }
+
+    .about-highlight h3 {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .about-highlight p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 2.5rem;
+      transition: border-color 0.25s, background 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      background: var(--bg3);
+    }
+
+    .project-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      min-width: 2.5rem;
+      text-align: center;
+      transition: color 0.25s;
+    }
+
+    .project-card:hover .project-num { color: var(--accent); }
+
+    .project-info h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .project-arrow {
+      font-size: 1.5rem;
+      color: var(--muted);
+      transition: color 0.25s, transform 0.25s;
+    }
+
+    .project-card:hover .project-arrow {
+      color: var(--accent);
+      transform: translateX(-4px);
+    }
+
+    /* ── VIDEO GRID ── */
+    .video-section-bg {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--bg3);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: border-color 0.25s;
+      text-decoration: none;
+    }
+
+    .video-thumb:hover { border-color: var(--accent); }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .video-thumb:hover img { opacity: 1; }
+
+    .video-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .video-thumb:hover .play-btn {
+      transform: scale(1.1);
+      background: var(--accent2);
+    }
+
+    .play-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #0a0a0a;
+      margin-right: -2px; /* optical center */
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    #contact .section-label { justify-content: center; display: flex; }
+    #contact .divider { margin: 0 auto 2.5rem; }
+
+    .contact-tagline {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 40ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .contact-btn:hover { background: var(--accent2); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #444;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 0 1.5rem 4rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .project-num { font-size: 1.5rem; }
+      .project-arrow { display: none; }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">HIBOO</div>
+    <ul class="nav-links">
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#production">הפקה</a></li>
+      <li><a href="#editing">עריכה</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">מפיק · יוצר · עורך</div>
+    <h1 class="hero-name">יהודה עייאש</h1>
+    <div class="hero-company">HIBOO Productions</div>
+    <div class="hero-roles">סרטים · תדמית · פרסומות · פסטיבל קולנוע רָצוֹא</div>
+    <div class="hero-scroll">גלול</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">/ אודות</div>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div>
+        <div class="about-text">
+          <p>נעים להכיר. שמי יהודה עייאש, מפיק, יוצר ועורך סרטים, סרטוני תדמית ופרסומות. כן, הרבה כובעים.</p>
+          <p>בנוסף, אני מייסד ומנהל פסטיבל קולנוע <strong>רָצוֹא</strong> — פסטיבל שעוסק בחיפוש אחר הא-לוהי והנשגב בחיינו.</p>
+          <p>בוגר לימודי קולנוע בבית הספר לאומנויות הקול והמסך במכללת ספיר.</p>
+        </div>
+        <div class="about-tags">
+          <span class="tag">הפקה</span>
+          <span class="tag">עריכה</span>
+          <span class="tag">בימוי</span>
+          <span class="tag">תסריט</span>
+          <span class="tag">תדמית</span>
+          <span class="tag">פרסומות</span>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <h3>פסטיבל רָצוֹא</h3>
+        <p>פסטיבל קולנוע ייחודי העוסק בחיפוש אחר הא-לוהי והנשגב בחיינו. מייסד ומנהל הפסטיבל.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTION -->
+  <section id="production">
+    <div class="section-label">/ הפקה</div>
+    <h2 class="section-title">פרויקטי הפקה</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
+        <div class="project-num">01</div>
+        <div class="project-info">
+          <h3>קינת יהונתן</h3>
+          <div class="project-meta">עלילתי · 2020 · 17 דקות</div>
+          <div class="project-desc">יהונתן הוא סוכן שב"כ, בנו של ראש הארגון. ערב חנוכה שהופך לחקירה שתקרע אותו בין נאמנותו לאביו לחברותו העמוקה עם דוד.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">תסריט ובימוי: יהודה עייאש</span>
+            <span class="tag">הפקה: יהודה עייאש, אור כהן</span>
+          </div>
+        </div>
+        <div class="project-arrow">←</div>
+      </a>
+
+      <a class="project-card" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
+        <div class="project-num">02</div>
+        <div class="project-info">
+          <h3>שש תמונות לרצח</h3>
+          <div class="project-meta">עלילתי · 2020 · 50 דקות</div>
+          <div class="project-desc">בשבת לפנות בוקר, 17 באוקטובר 2009, פרץ גבר לדירה בראשון לציון ורצח שישה מבני משפחה. כך מתנהל משפטו של הנאשם — שש תמונות במחזה אמיתי.</div>
+          <div class="about-tags" style="margin-top:0.8rem">
+            <span class="tag">בימוי: יובל בר-און</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
+          </div>
+        </div>
+        <div class="project-arrow">←</div>
+      </a>
+
+    </div>
+
+    <!-- תדמית הפקה -->
+    <div style="margin-top:3rem">
+      <div class="section-label" style="margin-bottom:1.2rem">/ סרטוני תדמית — הפקה</div>
+      <div class="video-grid">
+        <a class="video-thumb" href="https://youtu.be/he1jmHUz2vw" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/he1jmHUz2vw/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/Kzgu_Jka1y4" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/Kzgu_Jka1y4/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/0S6Rn-9jtvw" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/0S6Rn-9jtvw/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/cgg1GRzYtUc" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/cgg1GRzYtUc/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/M3NupH5aHzs" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/M3NupH5aHzs/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/-r-gUjzDQAM" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/-r-gUjzDQAM/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/Uubskg33Cc8" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/Uubskg33Cc8/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/BMuxjt2oPV0" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/BMuxjt2oPV0/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITING -->
+  <div class="video-section-bg">
+  <section id="editing">
+    <div class="section-label">/ עריכה</div>
+    <h2 class="section-title">עריכה</h2>
+    <div class="divider"></div>
+
+    <div style="margin-bottom:3rem">
+      <div class="section-label" style="margin-bottom:1.2rem">/ סרטים</div>
+      <div class="video-grid">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/PDKQM-wYCyE/mqdefault.jpg" alt="עריכה" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/qN3mE6xUw-E/mqdefault.jpg" alt="עריכה" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/QDCAFLKF03E" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/QDCAFLKF03E/mqdefault.jpg" alt="עריכה" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/1X4wCsOFbJM" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/1X4wCsOFbJM/mqdefault.jpg" alt="עריכה" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label" style="margin-bottom:1.2rem">/ סרטוני תדמית</div>
+      <div class="video-grid">
+        <a class="video-thumb" href="https://youtu.be/QxEOqLQbIe0" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/QxEOqLQbIe0/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/Kzgu_Jka1y4" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/Kzgu_Jka1y4/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/4vrJLDrSvuA" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/4vrJLDrSvuA/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/Td1IPimF868" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/Td1IPimF868/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/-r-gUjzDQAM" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/-r-gUjzDQAM/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/M3NupH5aHzs" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/M3NupH5aHzs/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/g2cHtVeYS6A" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/g2cHtVeYS6A/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+        <a class="video-thumb" href="https://youtu.be/ZPkpOI9CQKI" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/ZPkpOI9CQKI/mqdefault.jpg" alt="תדמית" loading="lazy" />
+          <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">/ צור קשר</div>
+    <h2 class="section-title">בואו נעבוד יחד</h2>
+    <div class="divider"></div>
+    <p class="contact-tagline">מחפשים מפיק, עורך, או שניהם? בואו נדבר.</p>
+    <a class="contact-btn" href="mailto:contact@hiboo.co.il">צור קשר</a>
+  </section>
+
+  <footer>
+    © 2024 HIBOO Productions · יהודה עייאש · כל הזכויות שמורות
+  </footer>
+
+</body>
+</html>
