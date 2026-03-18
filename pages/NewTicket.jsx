@@ -18,12 +18,13 @@ export default function NewTicket() {
   const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    const res = await fetch(`https://base44.app/api/apps/69b9d2a219ee88eeb7697c80/files/upload/public`, {
+    const res = await fetch(`${API_BASE}/uploadFile`, {
       method: "POST",
       body: formData,
     });
     if (!res.ok) throw new Error("upload failed");
     const data = await res.json();
+    if (data.error) throw new Error(data.error);
     return data.file_url;
   };
 
