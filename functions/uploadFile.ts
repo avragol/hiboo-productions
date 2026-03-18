@@ -1,5 +1,3 @@
-import { createClientFromRequest } from 'npm:@base44/sdk@0.8.20';
-
 Deno.serve(async (req) => {
   try {
     const formData = await req.formData();
@@ -11,19 +9,18 @@ Deno.serve(async (req) => {
 
     const APP_ID = Deno.env.get("BASE44_APP_ID")!;
     const SERVICE_TOKEN = Deno.env.get("BASE44_SERVICE_TOKEN")!;
-    const API_URL = "https://base44.app";
 
-    // Use the correct Base44 integration endpoint for file upload
     const uploadForm = new FormData();
     uploadForm.append('file', file, file.name);
 
-    const uploadRes = await fetch(`${API_URL}/api/apps/${APP_ID}/integration-endpoints/Core/UploadFile`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${SERVICE_TOKEN}`,
-      },
-      body: uploadForm,
-    });
+    const uploadRes = await fetch(
+      `https://base44.app/api/apps/${APP_ID}/integration-endpoints/Core/UploadFile`,
+      {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${SERVICE_TOKEN}` },
+        body: uploadForm,
+      }
+    );
 
     if (!uploadRes.ok) {
       const errText = await uploadRes.text();
@@ -33,6 +30,6 @@ Deno.serve(async (req) => {
     const data = await uploadRes.json();
     return Response.json({ file_url: data.file_url });
   } catch (error) {
-    return Response.json({ error: error.message }, { status: 500 });
+    return Response.json({ error: (error as Error).message }, { status: 500 });
   }
 });
