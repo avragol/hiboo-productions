@@ -646,6 +646,12 @@
       .modal-credits { grid-template-columns: 1fr; }
       .modal-info { padding: 1.2rem; }
     }
+
+    .films-title {
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
   </style>
 </head>
 <body>
@@ -660,7 +666,6 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">HIBOO</div>
     <ul class="nav-links">
       <li><a href="#about">אודות</a></li>
       <li><a href="#production">הפקה</a></li>
@@ -712,11 +717,11 @@
   <!-- PRODUCTION -->
   <section id="production">
     <div class="section-label">/ הפקה</div>
-    <h2 class="section-title">פרויקטי הפקה</h2>
+    <h2 class="section-title films-title">סרטים</h2>
     <div class="divider"></div>
     <div class="projects-grid">
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('davar')">
         <div class="project-num">01</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/b7362776d_02_haboker_sheli.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -725,13 +730,12 @@
           <div class="project-desc">אלמה בטוחה לחלוטין שאחותה נמצאת בסכנה. היא מגיעה באמצע הלילה לבית אימה כדי לשכנע אותה לעשות ביטוח בריאות — ונתקלת בחומת התנגדות. הסרט צולל אל השפעות ה-OCD על נפשו של האדם.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: מיכל מאיר דבירי</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('boker')">
         <div class="project-num">02</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/853ae3ca6_haboker_sheli_new.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -740,7 +744,6 @@
           <div class="project-desc">כל מה שדנה, אמנית בנפשה, רוצה הבוקר — לארגן את בנה בן ה-7 לבית הספר במינימום חיכוך. כשהשלכות האווירה המאיימת מגיעות לבנה, היא מחליטה לראשונה לעמוד מול בעלה.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: ליאב תמוז</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -755,11 +758,10 @@
           <div class="project-desc">יהונתן הוא סוכן שב"כ, בנו של ראש הארגון. ערב חנוכה שהופך לחקירה שתקרע אותו בין נאמנותו לאביו לחברותו העמוקה עם דוד.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: יהודה עייאש</span>
-            <span class="tag">הפקה: יהודה עייאש, אור כהן</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
-      </a>
+      </div>
 
       <div class="project-card clickable" onclick="openModal('hatzi')">
         <div class="project-num">04</div>
@@ -770,7 +772,6 @@
           <div class="project-desc">צבי, בחור ישיבה חרדי, מגיע ללשכת הגיוס לקבל דיחוי ונקלע לתסבוכת בירוקרטית. המצב מאלץ אותו להישאר עם החיילת כרמל — ותשחץ משותף הופך למתווך בין שני עולמות.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: עדן אביטבול</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -785,7 +786,6 @@
           <div class="project-desc">יונה, בחור ישיבה בן 17, עומד בכותל ומתחנן שיעזור לו להפסיק להימשך לגברים. שם הוא פוגש את אריה — שמנסה לעודד אותו, אך גם מעמיד אותו בניסיון.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">בימוי: רועי א. פרידן</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -814,7 +814,6 @@
           <div class="project-desc">מה-7 באוקטובר 2023 עד ה-7 באוקטובר 2024 — דמות שותקת ופואטית נאלצת להגר עם משפחתה. בהשראת באסטר קיטון ומרסו, שחור-לבן, פנטומימה וריקוד — ללא מילים, ולכן א-פוליטי.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: ג'סיקה ואטורי-דמבו</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -829,7 +828,6 @@
           <div class="project-desc">בשבת לפנות בוקר, 17 באוקטובר 2009, פרץ גבר לדירה בראשון לציון ורצח שישה מבני משפחה. כך מתנהל משפטו של הנאשם — שש תמונות במחזה אמיתי.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">בימוי: יובל בר-און</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -844,7 +842,6 @@
           <div class="project-desc">איתן הולך עם מורו אליהו הפייטן להופיע באירוע. בהשפעת הקהל מתפתה לסלסל — ומורו מאוכזב. בסוף, איתן שר עם מורו בשקט, כשזה אינו מבחין בו.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: ניר מימרן</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -859,7 +856,6 @@
           <div class="project-desc">ניסיונו של אורי לשחק דמקה מתנגש עם הצורך האובססיבי של אימו להזין אותו. מערכת יחסים מורכבת בצל הדיכאון, בישראל בשנותיה הראשונות.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: עמית קרני</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -874,7 +870,6 @@
           <div class="project-desc">דנא אמורה להתחתן בעוד כמה ימים. בשיחה אחת היא מגלה שרמי עזב את הארץ. היא נוסעת לדירתו בחיפה — כדי להבין.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: עביר ראשד</span>
-            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -1024,6 +1019,7 @@
   <script>
 
     const TRAILERS = {
+      boker: 'PDKQM-wYCyE',
       heartbreak: 'sfGTjqVFsNE',
       kinat: '77DqJeD2ils',
       hatzi: 'WS6XJkV4fCc'
@@ -1032,7 +1028,9 @@
     function openModal(id) {
       const overlay = document.getElementById('modal-' + id);
       const videoDiv = document.getElementById('video-' + id);
-      videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      if (videoDiv && TRAILERS[id]) {
+        videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      }
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -1076,6 +1074,50 @@
     });
   </script>
 
+
+
+  <!-- MODAL: דבר אחד בטוח -->
+  <div class="modal-overlay" id="modal-davar">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('davar')">✕</button>
+      <div class="modal-info" style="padding-top:2.5rem">
+        <div class="modal-title">דבר אחד בטוח</div>
+        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>מיכל מאיר דבירי</span></div>
+          <div>צילום: <span>גל רומבק</span></div>
+          <div>עיצוב אמנותי: <span>מעיין שריפי</span></div>
+          <div>עריכה: <span>מיכל מאיר דבירי</span></div>
+          <div>עיצוב פסקול: <span>שחף וגשל</span></div>
+          <div>מוזיקה מקורית: <span>שרון ברנטמן</span></div>
+          <div>משחק: <span>מיכל מאיר דבירי, ילנה ירלובה, דיאנה חן</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: הבוקר שלי -->
+  <div class="modal-overlay" id="modal-boker">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('boker')">✕</button>
+      <div class="modal-video" id="video-boker"></div>
+      <div class="modal-info">
+        <div class="modal-title">הבוקר שלי</div>
+        <div class="modal-meta">עלילתי · 2024 · 20 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>ליאב תמוז</span></div>
+          <div>צילום: <span>עומר דאידה</span></div>
+          <div>עיצוב אמנותי: <span>עדי אהרוני</span></div>
+          <div>עריכה: <span>תומר אבנד</span></div>
+          <div>עיצוב פסקול: <span>ירין מזרחי</span></div>
+          <div>מוזיקה מקורית: <span>ירין מזרחי</span></div>
+          <div>משחק: <span>אביגיל קובארי, דניאל זהבי, סהר טובים</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL: Heartbreak -->
   <div class="modal-overlay" id="modal-heartbreak">
