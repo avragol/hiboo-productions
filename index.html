@@ -721,7 +721,7 @@
     <div class="divider"></div>
     <div class="projects-grid">
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('davar')">
         <div class="project-num">01</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/b7362776d_02_haboker_sheli.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -1027,7 +1027,9 @@
     function openModal(id) {
       const overlay = document.getElementById('modal-' + id);
       const videoDiv = document.getElementById('video-' + id);
-      videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      if (videoDiv && TRAILERS[id]) {
+        videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      }
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -1071,6 +1073,28 @@
     });
   </script>
 
+
+
+  <!-- MODAL: דבר אחד בטוח -->
+  <div class="modal-overlay" id="modal-davar">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('davar')">✕</button>
+      <div class="modal-info" style="padding-top:2.5rem">
+        <div class="modal-title">דבר אחד בטוח</div>
+        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>מיכל מאיר דבירי</span></div>
+          <div>צילום: <span>גל רומבק</span></div>
+          <div>עיצוב אמנותי: <span>מעיין שריפי</span></div>
+          <div>עריכה: <span>מיכל מאיר דבירי</span></div>
+          <div>עיצוב פסקול: <span>שחף וגשל</span></div>
+          <div>מוזיקה מקורית: <span>שרון ברנטמן</span></div>
+          <div>משחק: <span>מיכל מאיר דבירי, ילנה ירלובה, דיאנה חן</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL: Heartbreak -->
   <div class="modal-overlay" id="modal-heartbreak">
