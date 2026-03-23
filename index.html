@@ -746,7 +746,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
+      <div class="project-card clickable" onclick="openModal('kinat')">
         <div class="project-num">03</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/a8f4c2a97_01_kinot_yehonatan.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -761,7 +761,7 @@
         <div class="project-arrow">→</div>
       </a>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('hatzi')">
         <div class="project-num">04</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/85904a374_about_yehuda.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -1094,6 +1094,49 @@
           <div>אונליין: <span>סרגיי בזרוקוב</span></div>
           <div>מוזיקה מקורית: <span>אילן שורקי</span></div>
           <div>משחק: <span>אשר זלמטי, מור בירגר, שרה זלמטי, עידו קוגן</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: קינת יהונתן -->
+  <div class="modal-overlay" id="modal-kinat">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('kinat')">✕</button>
+      <div class="modal-video" id="video-kinat"></div>
+      <div class="modal-info">
+        <div class="modal-title">קינת יהונתן</div>
+        <div class="modal-meta">עלילתי · 2020 · 17 דקות · הופץ</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש, אור כהן</span></div>
+          <div>תסריט ובימוי: <span>יהודה עייאש</span></div>
+          <div>צילום: <span>רועי א. פרידן</span></div>
+          <div>עריכה: <span>לירן דיין</span></div>
+          <div>עיצוב פסקול: <span>עומרי כהן</span></div>
+          <div>מוזיקה מקורית: <span>Deophor Studio</span></div>
+          <div>משחק: <span>סנדרו פיקרישוילי, דורון תבורי, עמוס אורן, רוית דור</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: חצי פגישה -->
+  <div class="modal-overlay" id="modal-hatzi">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('hatzi')">✕</button>
+      <div class="modal-video" id="video-hatzi"></div>
+      <div class="modal-info">
+        <div class="modal-title">חצי פגישה</div>
+        <div class="modal-meta">עלילתי · 2025 · 23 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>עדן אביטבול</span></div>
+          <div>צילום: <span>בועז יהונתן יעקב</span></div>
+          <div>עיצוב אמנותי: <span>ליאור מישל</span></div>
+          <div>עריכה: <span>חיים טבקמן</span></div>
+          <div>עיצוב פסקול: <span>אורי צ'צ'יק</span></div>
+          <div>מוזיקה מקורית: <span>דודי בר-דוד</span></div>
+          <div>משחק: <span>אדם גבאי, ליר כץ, נעם אימבר</span></div>
         </div>
       </div>
     </div>
