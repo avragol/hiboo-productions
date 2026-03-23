@@ -149,7 +149,7 @@
     }
 
     .hero-name {
-      font-size: clamp(3rem, 9vw, 7.5rem);
+      font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 900;
       line-height: 1;
       color: var(--text);
@@ -591,6 +591,61 @@
       .video-grid { grid-template-columns: 1fr; }
       .contact-details { flex-direction: column; align-items: center; }
     }
+
+    /* ── PROJECT MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .modal-close:hover { color: var(--accent); }
+    .modal-video { width: 100%; aspect-ratio: 16/9; background: #000; }
+    .modal-video iframe { width: 100%; height: 100%; border: none; }
+    .modal-info { padding: 1.8rem 2rem; }
+    .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .modal-meta { font-size: 0.78rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+    .modal-credits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .modal-credits span { color: var(--text); }
+    .project-card.clickable { cursor: pointer; }
+    @media (max-width: 600px) {
+      .modal-credits { grid-template-columns: 1fr; }
+      .modal-info { padding: 1.2rem; }
+    }
   </style>
 </head>
 <body>
@@ -691,7 +746,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
+      <div class="project-card clickable" onclick="openModal('kinat')">
         <div class="project-num">03</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/a8f4c2a97_01_kinot_yehonatan.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -706,7 +761,7 @@
         <div class="project-arrow">→</div>
       </a>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('hatzi')">
         <div class="project-num">04</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/85904a374_about_yehuda.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -750,7 +805,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('heartbreak')">
         <div class="project-num">07</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/8f561282e_07_heartbreak.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -967,6 +1022,41 @@
   </footer>
 
   <script>
+
+    const TRAILERS = {
+      heartbreak: 'sfGTjqVFsNE',
+      kinat: '77DqJeD2ils',
+      hatzi: 'WS6XJkV4fCc'
+    };
+
+    function openModal(id) {
+      const overlay = document.getElementById('modal-' + id);
+      const videoDiv = document.getElementById('video-' + id);
+      videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById('modal-' + id).classList.remove('open');
+      document.getElementById('video-' + id).innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) closeModal(this.id.replace('modal-', ''));
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(function(el) {
+          closeModal(el.id.replace('modal-', ''));
+        });
+      }
+    });
+
     function toggleMenu() {
       const overlay = document.getElementById('navOverlay');
       const btn = document.getElementById('hamburger');
@@ -985,6 +1075,72 @@
       if (e.target === this) closeMenu();
     });
   </script>
+
+
+  <!-- MODAL: Heartbreak -->
+  <div class="modal-overlay" id="modal-heartbreak">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('heartbreak')">✕</button>
+      <div class="modal-video" id="video-heartbreak"></div>
+      <div class="modal-info">
+        <div class="modal-title">Heartbreak</div>
+        <div class="modal-meta">היברידי · 2025 · 90 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יצחק שארי ויהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>ג'סיקה ואטורי-דמבו</span></div>
+          <div>צילום: <span>יניב ברמן</span></div>
+          <div>עריכה: <span>יניב ברמן</span></div>
+          <div>עיצוב פסקול: <span>מיכאל גורביץ</span></div>
+          <div>אונליין: <span>סרגיי בזרוקוב</span></div>
+          <div>מוזיקה מקורית: <span>אילן שורקי</span></div>
+          <div>משחק: <span>אשר זלמטי, מור בירגר, שרה זלמטי, עידו קוגן</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: קינת יהונתן -->
+  <div class="modal-overlay" id="modal-kinat">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('kinat')">✕</button>
+      <div class="modal-video" id="video-kinat"></div>
+      <div class="modal-info">
+        <div class="modal-title">קינת יהונתן</div>
+        <div class="modal-meta">עלילתי · 2020 · 17 דקות · הופץ</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש, אור כהן</span></div>
+          <div>תסריט ובימוי: <span>יהודה עייאש</span></div>
+          <div>צילום: <span>רועי א. פרידן</span></div>
+          <div>עריכה: <span>לירן דיין</span></div>
+          <div>עיצוב פסקול: <span>עומרי כהן</span></div>
+          <div>מוזיקה מקורית: <span>Deophor Studio</span></div>
+          <div>משחק: <span>סנדרו פיקרישוילי, דורון תבורי, עמוס אורן, רוית דור</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: חצי פגישה -->
+  <div class="modal-overlay" id="modal-hatzi">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('hatzi')">✕</button>
+      <div class="modal-video" id="video-hatzi"></div>
+      <div class="modal-info">
+        <div class="modal-title">חצי פגישה</div>
+        <div class="modal-meta">עלילתי · 2025 · 23 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>עדן אביטבול</span></div>
+          <div>צילום: <span>בועז יהונתן יעקב</span></div>
+          <div>עיצוב אמנותי: <span>ליאור מישל</span></div>
+          <div>עריכה: <span>חיים טבקמן</span></div>
+          <div>עיצוב פסקול: <span>אורי צ'צ'יק</span></div>
+          <div>מוזיקה מקורית: <span>דודי בר-דוד</span></div>
+          <div>משחק: <span>אדם גבאי, ליר כץ, נעם אימבר</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
