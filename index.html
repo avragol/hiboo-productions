@@ -777,7 +777,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('einYiush')">
         <div class="project-num">05</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/6338baad9_05_ein_shum_yiush.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -791,7 +791,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('aveda')">
         <div class="project-num">06</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/2dad92e35_06_aveda.png" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -1037,7 +1037,8 @@
 
     function closeModal(id) {
       document.getElementById('modal-' + id).classList.remove('open');
-      document.getElementById('video-' + id).innerHTML = '';
+      var videoDiv = document.getElementById('video-' + id);
+      if (videoDiv) videoDiv.innerHTML = '';
       document.body.style.overflow = '';
     }
 
@@ -1101,8 +1102,7 @@
   <div class="modal-overlay" id="modal-boker">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('boker')">✕</button>
-      <div class="modal-video" id="video-boker"></div>
-      <div class="modal-info">
+      <div class="modal-info" style="padding-top:2.5rem">
         <div class="modal-title">הבוקר שלי</div>
         <div class="modal-meta">עלילתי · 2024 · 20 דקות · בהפצה</div>
         <div class="modal-credits">
@@ -1179,6 +1179,48 @@
           <div>עיצוב פסקול: <span>אורי צ'צ'יק</span></div>
           <div>מוזיקה מקורית: <span>דודי בר-דוד</span></div>
           <div>משחק: <span>אדם גבאי, ליר כץ, נעם אימבר</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Ein Yiush -->
+  <div class="modal-overlay" id="modal-einYiush" onclick="if(event.target===this)closeModal('einYiush')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('einYiush')">✕</button>
+      <div class="modal-info" style="padding-top:2.5rem">
+        <div class="modal-title">אין ייאוש</div>
+        <div class="modal-meta">עלילתי · 2026 · 12 דקות · בפוסט</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>בימוי: <span>רועי א. פרידן</span></div>
+          <div>תסריט: <span>אלימלך ויט</span></div>
+          <div>צילום: <span>רועי א. פרידן</span></div>
+          <div>עריכה: <span>נאור סרור</span></div>
+          <div>עיצוב פסקול: <span>נעמי פרנקל</span></div>
+          <div>מוזיקה מקורית: <span>אושר אלון</span></div>
+          <div>משחק: <span>יענקלה דיאמנט, מיכאל נמרוד פלד</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Aveda -->
+  <div class="modal-overlay" id="modal-aveda" onclick="if(event.target===this)closeModal('aveda')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('aveda')">✕</button>
+      <div class="modal-info" style="padding-top:2.5rem">
+        <div class="modal-title">אבדה</div>
+        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בפוסט</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>בימוי: <span>יהודה עייאש</span></div>
+          <div>תסריט: <span>אליה טרוס ויהודה עייאש</span></div>
+          <div>צילום: <span>רועי א. פרידן</span></div>
+          <div>עריכה: <span>יהודה עייאש</span></div>
+          <div>עיצוב פסקול: <span>נעמי פרנקל</span></div>
+          <div>מוזיקה מקורית: <span>נעמי פרנקל</span></div>
+          <div>משחק: <span>ענר קדם, הילה הרוש, נופר כרמי, אדם שוורץ</span></div>
         </div>
       </div>
     </div>
