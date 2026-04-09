@@ -258,7 +258,7 @@
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
       font-weight: 700;
       margin-bottom: 2rem;
       color: var(--text);
@@ -819,7 +819,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <a class="project-card" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
+      <div class="project-card clickable" onclick="openModal('shesh')">
         <div class="project-num">08</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/80e5917ea_08_shesh_tmunot.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -831,9 +831,9 @@
           </div>
         </div>
         <div class="project-arrow">→</div>
-      </a>
+      </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('hai')">
         <div class="project-num">09</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/39f38f16f_hai_venealem.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -847,7 +847,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('halakhim')">
         <div class="project-num">10</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/5c8f42437_10_halakhim_kehim.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -861,7 +861,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" onclick="openModal('pashut')">
         <div class="project-num">11</div>
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/abeae896e_11_pashut_nealem.jpg" alt="" loading="lazy" /></div>
         <div class="project-info">
@@ -1022,7 +1022,10 @@
       boker: 'PDKQM-wYCyE',
       heartbreak: 'sfGTjqVFsNE',
       kinat: '77DqJeD2ils',
-      hatzi: 'WS6XJkV4fCc'
+      hatzi: 'WS6XJkV4fCc',
+      shesh: '5qcYAwv26V0',
+      halakhim: 'QxzQHHAhFmY',
+      pashut: 'hIQHmfkVqkM'
     };
 
     function openModal(id) {
@@ -1221,6 +1224,90 @@
           <div>עיצוב פסקול: <span>נעמי פרנקל</span></div>
           <div>מוזיקה מקורית: <span>נעמי פרנקל</span></div>
           <div>משחק: <span>ענר קדם, הילה הרוש, נופר כרמי, אדם שוורץ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: שש תמונות לרצח -->
+  <div class="modal-overlay" id="modal-shesh" onclick="if(event.target===this)closeModal('shesh')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('shesh')">✕</button>
+      <div class="modal-video" id="video-shesh"></div>
+      <div class="modal-info">
+        <div class="modal-title">שש תמונות לרצח</div>
+        <div class="modal-meta">עלילתי · 2020 · 50 דקות · הופץ</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>בימוי: <span>יובל בר-און</span></div>
+          <div>תסריט: <span>רון פרסלר</span></div>
+          <div>צילום: <span>יניב דואק</span></div>
+          <div>עריכה: <span>עינב וייסברג</span></div>
+          <div>עיצוב פסקול: <span>אילן אדמון</span></div>
+          <div>משחק: <span>אריאל קריזופולסקי, מרינה איבנובה</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: חי ונעלם -->
+  <div class="modal-overlay" id="modal-hai" onclick="if(event.target===this)closeModal('hai')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('hai')">✕</button>
+      <div class="modal-info" style="padding-top:2.5rem">
+        <div class="modal-title">חי ונעלם</div>
+        <div class="modal-meta">עלילתי · 2023 · 15 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>ניר מימרן</span></div>
+          <div>צילום: <span>שי טריינין</span></div>
+          <div>עיצוב אמנותי: <span>שירה ירמיהו</span></div>
+          <div>עריכה: <span>תומר אבנד</span></div>
+          <div>עיצוב פסקול: <span>קרן אור ביטון</span></div>
+          <div>משחק: <span>משה חבושה, אמיר טסלר</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: חלקים כהים -->
+  <div class="modal-overlay" id="modal-halakhim" onclick="if(event.target===this)closeModal('halakhim')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('halakhim')">✕</button>
+      <div class="modal-video" id="video-halakhim"></div>
+      <div class="modal-info">
+        <div class="modal-title">חלקים כהים</div>
+        <div class="modal-meta">אנימציה · 2023 · 7 דקות · בהפצה</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט, בימוי, עיצוב אמנותי ועריכה: <span>עמית קרני</span></div>
+          <div>עיצוב פסקול: <span>עדי בר</span></div>
+          <div>אפטריסט: <span>גיל שלום</span></div>
+          <div>מוזיקה מקורית: <span>נעם זגורי</span></div>
+          <div>משחק: <span>מרים איבנוב</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: פשוט נעלם -->
+  <div class="modal-overlay" id="modal-pashut" onclick="if(event.target===this)closeModal('pashut')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('pashut')">✕</button>
+      <div class="modal-video" id="video-pashut"></div>
+      <div class="modal-info">
+        <div class="modal-title">פשוט נעלם</div>
+        <div class="modal-meta">עלילתי · 2022 · 25 דקות · הופץ</div>
+        <div class="modal-credits">
+          <div>הפקה: <span>יהודה עייאש</span></div>
+          <div>תסריט ובימוי: <span>עביר ראשד</span></div>
+          <div>צילום: <span>שרון זריהם</span></div>
+          <div>עיצוב אמנותי: <span>שחר משה</span></div>
+          <div>עריכה: <span>יובל לוגר</span></div>
+          <div>עיצוב פסקול: <span>חן גוסלר</span></div>
+          <div>מוזיקה מקורית: <span>גלית וושדי</span></div>
+          <div>משחק: <span>האלא שחוק, עואטף קדורה, הילאל כבוב, סנא ראשד</span></div>
         </div>
       </div>
     </div>
