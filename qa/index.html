@@ -544,50 +544,6 @@
 
     .contact-btn:hover { background: var(--accent2); }
 
-    /* Contact Form */
-    .contact-form {
-      width: 100%;
-      max-width: 520px;
-      margin: 2rem auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 0.85rem 1rem;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.95rem;
-      direction: rtl;
-      transition: border-color 0.2s;
-      box-sizing: border-box;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .contact-form textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: rgba(255,255,255,0.35);
-    }
-    .form-status {
-      font-size: 0.9rem;
-      text-align: center;
-      min-height: 1.4em;
-    }
-    .form-status.success { color: #6fcf97; }
-    .form-status.error { color: #eb5757; }
-
 
     /* ── FOOTER ── */
     footer {
@@ -698,9 +654,7 @@
       font-size: clamp(2rem, 5vw, 3.5rem);
     }
   </style>
-  <!-- EmailJS -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
+<script type="text/javascript">
     (function(){
       emailjs.init({ publicKey: "PLACEHOLDER_PUBLIC_KEY" });
     })();
@@ -1053,13 +1007,6 @@
         <a href="mailto:hibooproductions@gmail.com">hibooproductions@gmail.com</a>
       </div>
     </div>
-    <form class="contact-form" id="contactForm" onsubmit="sendMessage(event)">
-      <input type="text" id="from_name" name="from_name" placeholder="השם שלך" required />
-      <input type="email" id="from_email" name="from_email" placeholder="כתובת המייל שלך" required />
-      <textarea id="message" name="message" placeholder="מה תרצה לכתוב?" required></textarea>
-      <button type="submit" class="contact-btn" id="submitBtn">שלח הודעה</button>
-      <div class="form-status" id="formStatus"></div>
-    </form>
   </section>
 
   <!-- FOOTER -->
@@ -1120,31 +1067,6 @@
       const btn = document.getElementById('hamburger');
       overlay.classList.toggle('open');
       btn.classList.toggle('open');
-    }
-
-
-    function sendMessage(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      const status = document.getElementById('formStatus');
-      btn.disabled = true;
-      btn.textContent = 'שולח...';
-      status.className = 'form-status';
-      status.textContent = '';
-
-      emailjs.sendForm('PLACEHOLDER_SERVICE_ID', 'PLACEHOLDER_TEMPLATE_ID', '#contactForm')
-        .then(function() {
-          status.textContent = '✓ ההודעה נשלחה בהצלחה!';
-          status.className = 'form-status success';
-          document.getElementById('contactForm').reset();
-          btn.disabled = false;
-          btn.textContent = 'שלח הודעה';
-        }, function(error) {
-          status.textContent = '✗ שגיאה בשליחה. אנא נסה שוב.';
-          status.className = 'form-status error';
-          btn.disabled = false;
-          btn.textContent = 'שלח הודעה';
-        });
     }
     function closeMenu() {
       const overlay = document.getElementById('navOverlay');
