@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://avragol.github.io/hiboo-productions/sitemap.xml
+Sitemap: https://www.hiboo-productions.co.il/sitemap.xml
