@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YPS5QKHM9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8YPS5QKHM9');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- SEO & Open Graph -->
-  <meta name="description" content="יהודה עייאש — מפיק ועורך קולנוע עם קרוב ל-10 שנות ניסיון. HIBOO Productions: סרטים, תדמית, פסטיבלים." />
-  <link rel="canonical" href="https://www.hiboo-productions.co.il/" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/cac2ea6f7_favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/65e8dee05_favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/f75f0db76_favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/afad33630_apple-touch-icon.png" />
+  <!-- SEO / Google Search -->
+  <meta name="description" content="יהודה עייאש — במאי וצלם | HIBOO Productions. יצירות קולנועיות, פרסומות ופרויקטים אמנותיים." />
+  <meta property="og:title" content="יהודה עייאש | HIBOO Productions" />
+  <meta property="og:description" content="במאי וצלם | יצירות קולנועיות, פרסומות ופרויקטים אמנותיים." />
+  <meta property="og:image" content="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/a497147e4_android-chrome-512x512.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.hiboo-productions.co.il/" />
-  <meta property="og:title" content="יהודה עייאש | HIBOO Productions — מפיק ועורך קולנוע" />
-  <meta property="og:description" content="יהודה עייאש — מפיק ועורך קולנוע עם קרוב ל-10 שנות ניסיון. HIBOO Productions: סרטים, תדמית, פסטיבלים." />
-  <meta property="og:image" content="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/ce14e05f2_hero_bg.jpg" />
-  <meta property="og:locale" content="he_IL" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="יהודה עייאש | HIBOO Productions" />
-  <meta name="twitter:description" content="מפיק ועורך קולנוע — סרטים, תדמית, פסטיבלים." />
-  <meta name="twitter:image" content="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/ce14e05f2_hero_bg.jpg" />
+  <meta property="og:url" content="https://www.hiboo-productions.co.il" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/a497147e4_android-chrome-512x512.png" />
   <title>יהודה עייאש | HIBOO Productions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -149,7 +141,7 @@
       justify-content: flex-end;
       padding: 0 3rem 5rem;
       position: relative;
-      background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.8)), url("https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/ce14e05f2_hero_bg.jpg") center/cover no-repeat;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1208 60%, #0a0a0a 100%);
       overflow: hidden;
     }
 
@@ -171,7 +163,7 @@
     }
 
     .hero-name {
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(3rem, 9vw, 7.5rem);
       font-weight: 900;
       line-height: 1;
       color: var(--text);
@@ -217,48 +209,6 @@
       background: linear-gradient(to bottom, var(--muted), transparent);
     }
 
-
-    /* ── PROJECT THUMBNAIL ── */
-    .project-thumb {
-      width: 120px;
-      height: 68px;
-      flex-shrink: 0;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: border-color 0.25s;
-    }
-
-    .project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-      transition: opacity 0.3s;
-    }
-
-    .project-card:hover .project-thumb { border-color: var(--accent); }
-    .project-card:hover .project-thumb img { opacity: 1; }
-
-    /* ── ABOUT PHOTO ── */
-    .about-photo {
-      width: 100%;
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    @media (max-width: 768px) {
-      .project-thumb { width: 80px; height: 45px; }
-    }
-
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(6px); }
@@ -272,7 +222,7 @@
     }
 
     .section-label {
-      font-size: 0.95rem;
+      font-size: 0.7rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--accent);
@@ -280,7 +230,7 @@
     }
 
     .section-title {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 700;
       margin-bottom: 2rem;
       color: var(--text);
@@ -354,7 +304,7 @@
       background: var(--bg2);
       border: 1px solid var(--border);
       display: grid;
-      grid-template-columns: auto auto 1fr auto;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 2rem;
       padding: 2rem 2.5rem;
@@ -613,67 +563,6 @@
       .video-grid { grid-template-columns: 1fr; }
       .contact-details { flex-direction: column; align-items: center; }
     }
-
-    /* ── PROJECT MODAL ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      max-width: 780px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1.4rem;
-      cursor: pointer;
-      line-height: 1;
-      transition: color 0.2s;
-      z-index: 10;
-    }
-    .modal-close:hover { color: var(--accent); }
-    .modal-video { width: 100%; aspect-ratio: 16/9; background: #000; }
-    .modal-video iframe { width: 100%; height: 100%; border: none; }
-    .modal-info { padding: 1.8rem 2rem; }
-    .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-    .modal-meta { font-size: 0.78rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.2rem; }
-    .modal-credits {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.4rem 2rem;
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .modal-credits span { color: var(--text); }
-    .project-card.clickable { cursor: pointer; }
-    @media (max-width: 600px) {
-      .modal-credits { grid-template-columns: 1fr; }
-      .modal-info { padding: 1.2rem; }
-    }
-
-    .films-title {
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-    }
   </style>
 </head>
 <body>
@@ -687,8 +576,8 @@
   </div>
 
   <!-- NAV -->
-  <header role="banner">
   <nav>
+    <div class="nav-logo">HIBOO</div>
     <ul class="nav-links">
       <li><a href="#about">אודות</a></li>
       <li><a href="#production">הפקה</a></li>
@@ -699,10 +588,8 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
-  </header>
 
   <!-- HERO -->
-  <main id="content">
   <div class="hero">
     <div class="hero-eyebrow">מפיק · יוצר · עורך</div>
     <h1 class="hero-name">יהודה עייאש</h1>
@@ -730,94 +617,92 @@
           <span class="tag">פרסומות</span>
         </div>
       </div>
-      <div>
-        <div class="about-photo">
-          <img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/c78da0701_yehuda_portrait.jpg" alt="יהודה עייאש" loading="lazy" />
-        </div>
-
+      <div class="about-highlight">
+        <h3>פסטיבל רָצוֹא</h3>
+        <p>פסטיבל קולנוע ייחודי העוסק בחיפוש אחר הא-לוהי והנשגב בחיינו. מייסד ומנהל הפסטיבל.</p>
       </div>
     </div>
   </section>
 
   <!-- PRODUCTION -->
   <section id="production">
-    <div class="section-label" style="margin-bottom:1.2rem">/ סרטים — הפקה</div>
+    <div class="section-label">/ הפקה</div>
+    <h2 class="section-title">פרויקטי הפקה</h2>
     <div class="divider"></div>
     <div class="projects-grid">
 
-      <div class="project-card clickable" onclick="openModal('davar')">
+      <div class="project-card">
         <div class="project-num">01</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/b7362776d_02_haboker_sheli.jpg" alt="תמונה ממיזם "הבוקר שלי" — יהודה עייאש" loading="lazy" /></div>
         <div class="project-info">
           <h3>דבר אחד בטוח</h3>
           <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">אלמה בטוחה לחלוטין שאחותה נמצאת בסכנה. היא מגיעה באמצע הלילה לבית אימה כדי לשכנע אותה לעשות ביטוח בריאות — ונתקלת בחומת התנגדות. הסרט צולל אל השפעות ה-OCD על נפשו של האדם.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: מיכל מאיר דבירי</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('boker')">
+      <div class="project-card">
         <div class="project-num">02</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/853ae3ca6_haboker_sheli_new.jpg" alt="תמונה ממיזם "הבוקר שלי" — יהודה עייאש" loading="lazy" /></div>
         <div class="project-info">
           <h3>הבוקר שלי</h3>
           <div class="project-meta">עלילתי · 2024 · 20 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">כל מה שדנה, אמנית בנפשה, רוצה הבוקר — לארגן את בנה בן ה-7 לבית הספר במינימום חיכוך. כשהשלכות האווירה המאיימת מגיעות לבנה, היא מחליטה לראשונה לעמוד מול בעלה.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: ליאב תמוז</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('kinat')">
+      <a class="project-card" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
         <div class="project-num">03</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/a8f4c2a97_01_kinot_yehonatan.jpg" alt="תמונה מהסרט "קינת יהונתן"" loading="lazy" /></div>
         <div class="project-info">
           <h3>קינת יהונתן</h3>
           <div class="project-meta">עלילתי · 2020 · 17 דקות · <span class="project-status status-festival">הופץ</span></div>
           <div class="project-desc">יהונתן הוא סוכן שב"כ, בנו של ראש הארגון. ערב חנוכה שהופך לחקירה שתקרע אותו בין נאמנותו לאביו לחברותו העמוקה עם דוד.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: יהודה עייאש</span>
+            <span class="tag">הפקה: יהודה עייאש, אור כהן</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="project-card clickable" onclick="openModal('hatzi')">
+      <div class="project-card">
         <div class="project-num">04</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/85904a374_about_yehuda.jpg" alt="יהודה עייאש — מפיק ועורך, HIBOO Productions" loading="lazy" /></div>
         <div class="project-info">
           <h3>חצי פגישה</h3>
-          <div class="project-meta">עלילתי · 2025 · 23 דקות · <span class="project-status status-distributed">בהפצה</span></div>
+          <div class="project-meta">עלילתי · 2025 · 23 דקות · <span class="project-status status-post">בפוסט</span></div>
           <div class="project-desc">צבי, בחור ישיבה חרדי, מגיע ללשכת הגיוס לקבל דיחוי ונקלע לתסבוכת בירוקרטית. המצב מאלץ אותו להישאר עם החיילת כרמל — ותשחץ משותף הופך למתווך בין שני עולמות.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: עדן אביטבול</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('einYiush')">
+      <div class="project-card">
         <div class="project-num">05</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/6338baad9_05_ein_shum_yiush.jpg" alt="תמונה מהסרט "אין ייאוש"" loading="lazy" /></div>
         <div class="project-info">
-          <h3>אין ייאוש</h3>
+          <h3>אין שום ייאוש</h3>
           <div class="project-meta">עלילתי · 2026 · 12 דקות · <span class="project-status status-post">בפוסט</span></div>
           <div class="project-desc">יונה, בחור ישיבה בן 17, עומד בכותל ומתחנן שיעזור לו להפסיק להימשך לגברים. שם הוא פוגש את אריה — שמנסה לעודד אותו, אך גם מעמיד אותו בניסיון.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">בימוי: רועי א. פרידן</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('aveda')">
+      <div class="project-card">
         <div class="project-num">06</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/2dad92e35_06_aveda.png" alt="תמונה מהסרט "אבדה"" loading="lazy" /></div>
         <div class="project-info">
           <h3>אבדה</h3>
           <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-post">בפוסט</span></div>
@@ -829,71 +714,71 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('heartbreak')">
+      <div class="project-card">
         <div class="project-num">07</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/8f561282e_07_heartbreak.jpg" alt="תמונה מהסרט Heartbreak" loading="lazy" /></div>
         <div class="project-info">
           <h3>Heartbreak</h3>
           <div class="project-meta">היברידי · 2025 · 90 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">מה-7 באוקטובר 2023 עד ה-7 באוקטובר 2024 — דמות שותקת ופואטית נאלצת להגר עם משפחתה. בהשראת באסטר קיטון ומרסו, שחור-לבן, פנטומימה וריקוד — ללא מילים, ולכן א-פוליטי.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: ג'סיקה ואטורי-דמבו</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('shesh')">
+      <a class="project-card" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
         <div class="project-num">08</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/80e5917ea_08_shesh_tmunot.jpg" alt="תמונה מהסרט "שש תמונות לרצח"" loading="lazy" /></div>
         <div class="project-info">
           <h3>שש תמונות לרצח</h3>
           <div class="project-meta">עלילתי · 2020 · 50 דקות · <span class="project-status status-festival">הופץ</span></div>
           <div class="project-desc">בשבת לפנות בוקר, 17 באוקטובר 2009, פרץ גבר לדירה בראשון לציון ורצח שישה מבני משפחה. כך מתנהל משפטו של הנאשם — שש תמונות במחזה אמיתי.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">בימוי: יובל בר-און</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="project-card clickable" onclick="openModal('hai')">
+      <div class="project-card">
         <div class="project-num">09</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/39f38f16f_hai_venealem.jpg" alt="תמונה מהסרט "חי ונעלם"" loading="lazy" /></div>
         <div class="project-info">
           <h3>חי ונעלם</h3>
           <div class="project-meta">עלילתי · 2023 · 15 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">איתן הולך עם מורו אליהו הפייטן להופיע באירוע. בהשפעת הקהל מתפתה לסלסל — ומורו מאוכזב. בסוף, איתן שר עם מורו בשקט, כשזה אינו מבחין בו.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: ניר מימרן</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('halakhim')">
+      <div class="project-card">
         <div class="project-num">10</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/5c8f42437_10_halakhim_kehim.jpg" alt="תמונה מהסרט "חלקים כהים"" loading="lazy" /></div>
         <div class="project-info">
           <h3>חלקים כהים</h3>
           <div class="project-meta">אנימציה · 2023 · 7 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">ניסיונו של אורי לשחק דמקה מתנגש עם הצורך האובססיבי של אימו להזין אותו. מערכת יחסים מורכבת בצל הדיכאון, בישראל בשנותיה הראשונות.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: עמית קרני</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card clickable" onclick="openModal('pashut')">
+      <div class="project-card">
         <div class="project-num">11</div>
-        <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/abeae896e_11_pashut_nealem.jpg" alt="תמונה מהסרט "פשוט נעלם"" loading="lazy" /></div>
         <div class="project-info">
           <h3>פשוט נעלם</h3>
           <div class="project-meta">עלילתי · 2022 · 25 דקות · <span class="project-status status-festival">הופץ</span></div>
           <div class="project-desc">דנא אמורה להתחתן בעוד כמה ימים. בשיחה אחת היא מגלה שרמי עזב את הארץ. היא נוסעת לדירתו בחיפה — כדי להבין.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: עביר ראשד</span>
+            <span class="tag">הפקה: יהודה עייאש</span>
           </div>
         </div>
         <div class="project-arrow">→</div>
@@ -944,18 +829,21 @@
   <!-- EDITING -->
   <div class="video-section-bg">
   <section id="editing">
-    <div class="section-label" style="margin-bottom:1.2rem">/ סרטים — עריכה</div>
+    <div class="section-label">/ עריכה</div>
     <div class="divider"></div>
 
     <div style="margin-bottom:3rem">
+      <div class="section-label" style="margin-bottom:1.2rem">/ סרטים</div>
       <div class="video-grid">
         <a class="video-thumb" href="https://www.youtube.com/watch?v=PDKQM-wYCyE" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/PDKQM-wYCyE/mqdefault.jpg" alt="קינת יהונתן" loading="lazy" />
           <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          <div class="video-title-overlay">קינת יהונתן</div>
         </a>
         <a class="video-thumb" href="https://youtu.be/qN3mE6xUw-E" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/qN3mE6xUw-E/mqdefault.jpg" alt="שש תמונות לרצח" loading="lazy" />
           <div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          <div class="video-title-overlay">שש תמונות לרצח</div>
         </a>
         <a class="video-thumb" href="https://youtu.be/QDCAFLKF03E" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/QDCAFLKF03E/mqdefault.jpg" alt="עריכה" loading="lazy" />
@@ -969,7 +857,7 @@
     </div>
 
     <div>
-      <div class="section-label" style="margin-bottom:1.2rem">/ סרטוני תדמית — עריכה</div>
+      <div class="section-label" style="margin-bottom:1.2rem">/ סרטוני תדמית</div>
       <div class="video-grid">
         <a class="video-thumb" href="https://youtu.be/QxEOqLQbIe0" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/QxEOqLQbIe0/mqdefault.jpg" alt="תדמית" loading="lazy" />
@@ -1027,7 +915,6 @@
     <a class="contact-btn" href="mailto:hibooproductions@gmail.com">שלח הודעה</a>
   </section>
 
-  </main>
   <!-- FOOTER -->
   <footer>
     <div class="footer-social">
@@ -1039,48 +926,6 @@
   </footer>
 
   <script>
-
-    const TRAILERS = {
-      boker: 'PDKQM-wYCyE',
-      heartbreak: 'sfGTjqVFsNE',
-      kinat: '77DqJeD2ils',
-      hatzi: 'WS6XJkV4fCc',
-      shesh: '5qcYAwv26V0',
-      halakhim: 'QxzQHHAhFmY',
-      pashut: 'hIQHmfkVqkM'
-    };
-
-    function openModal(id) {
-      const overlay = document.getElementById('modal-' + id);
-      const videoDiv = document.getElementById('video-' + id);
-      if (videoDiv && TRAILERS[id]) {
-        videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-      }
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal(id) {
-      document.getElementById('modal-' + id).classList.remove('open');
-      var videoDiv = document.getElementById('video-' + id);
-      if (videoDiv) videoDiv.innerHTML = '';
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('.modal-overlay').forEach(function(el) {
-      el.addEventListener('click', function(e) {
-        if (e.target === this) closeModal(this.id.replace('modal-', ''));
-      });
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal-overlay.open').forEach(function(el) {
-          closeModal(el.id.replace('modal-', ''));
-        });
-      }
-    });
-
     function toggleMenu() {
       const overlay = document.getElementById('navOverlay');
       const btn = document.getElementById('hamburger');
@@ -1099,241 +944,6 @@
       if (e.target === this) closeMenu();
     });
   </script>
-
-
-
-  <!-- MODAL: דבר אחד בטוח -->
-  <div class="modal-overlay" id="modal-davar">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('davar')">✕</button>
-      <div class="modal-info" style="padding-top:2.5rem">
-        <div class="modal-title">דבר אחד בטוח</div>
-        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בהפצה</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>תסריט ובימוי: <span>מיכל מאיר דבירי</span></div>
-          <div>צילום: <span>גל רומבק</span></div>
-          <div>עיצוב אמנותי: <span>מעיין שריפי</span></div>
-          <div>עריכה: <span>מיכל מאיר דבירי</span></div>
-          <div>עיצוב פסקול: <span>שחף וגשל</span></div>
-          <div>מוזיקה מקורית: <span>שרון ברנטמן</span></div>
-          <div>משחק: <span>מיכל מאיר דבירי, ילנה ירלובה, דיאנה חן</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: הבוקר שלי -->
-  <div class="modal-overlay" id="modal-boker">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('boker')">✕</button>
-      <div class="modal-info" style="padding-top:2.5rem">
-        <div class="modal-title">הבוקר שלי</div>
-        <div class="modal-meta">עלילתי · 2024 · 20 דקות · בהפצה</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>תסריט ובימוי: <span>ליאב תמוז</span></div>
-          <div>צילום: <span>עומר דאידה</span></div>
-          <div>עיצוב אמנותי: <span>עדי אהרוני</span></div>
-          <div>עריכה: <span>תומר אבנד</span></div>
-          <div>עיצוב פסקול: <span>ירין מזרחי</span></div>
-          <div>מוזיקה מקורית: <span>ירין מזרחי</span></div>
-          <div>משחק: <span>אביגיל קובארי, דניאל זהבי, סהר טובים</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: Heartbreak -->
-  <div class="modal-overlay" id="modal-heartbreak">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('heartbreak')">✕</button>
-      <div class="modal-video" id="video-heartbreak"></div>
-      <div class="modal-info">
-        <div class="modal-title">Heartbreak</div>
-        <div class="modal-meta">היברידי · 2025 · 90 דקות · בהפצה</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יצחק שארי ויהודה עייאש</span></div>
-          <div>תסריט ובימוי: <span>ג'סיקה ואטורי-דמבו</span></div>
-          <div>צילום: <span>יניב ברמן</span></div>
-          <div>עריכה: <span>יניב ברמן</span></div>
-          <div>עיצוב פסקול: <span>מיכאל גורביץ</span></div>
-          <div>אונליין: <span>סרגיי בזרוקוב</span></div>
-          <div>מוזיקה מקורית: <span>אילן שורקי</span></div>
-          <div>משחק: <span>אשר זלמטי, מור בירגר, שרה זלמטי, עידו קוגן</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: קינת יהונתן -->
-  <div class="modal-overlay" id="modal-kinat">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('kinat')">✕</button>
-      <div class="modal-video" id="video-kinat"></div>
-      <div class="modal-info">
-        <div class="modal-title">קינת יהונתן</div>
-        <div class="modal-meta">עלילתי · 2020 · 17 דקות · הופץ</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש, אור כהן</span></div>
-          <div>תסריט ובימוי: <span>יהודה עייאש</span></div>
-          <div>צילום: <span>רועי א. פרידן</span></div>
-          <div>עריכה: <span>לירן דיין</span></div>
-          <div>עיצוב פסקול: <span>עומרי כהן</span></div>
-          <div>מוזיקה מקורית: <span>Deophor Studio</span></div>
-          <div>משחק: <span>סנדרו פיקרישוילי, דורון תבורי, עמוס אורן, רוית דור</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: חצי פגישה -->
-  <div class="modal-overlay" id="modal-hatzi">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('hatzi')">✕</button>
-      <div class="modal-video" id="video-hatzi"></div>
-      <div class="modal-info">
-        <div class="modal-title">חצי פגישה</div>
-        <div class="modal-meta">עלילתי · 2025 · 23 דקות · בהפצה</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>תסריט ובימוי: <span>עדן אביטבול</span></div>
-          <div>צילום: <span>בועז יהונתן יעקב</span></div>
-          <div>עיצוב אמנותי: <span>ליאור מישל</span></div>
-          <div>עריכה: <span>חיים טבקמן</span></div>
-          <div>עיצוב פסקול: <span>אורי צ'צ'יק</span></div>
-          <div>מוזיקה מקורית: <span>דודי בר-דוד</span></div>
-          <div>משחק: <span>אדם גבאי, ליר כץ, נעם אימבר</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: Ein Yiush -->
-  <div class="modal-overlay" id="modal-einYiush" onclick="if(event.target===this)closeModal('einYiush')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('einYiush')">✕</button>
-      <div class="modal-info" style="padding-top:2.5rem">
-        <div class="modal-title">אין ייאוש</div>
-        <div class="modal-meta">עלילתי · 2026 · 12 דקות · בפוסט</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>בימוי: <span>רועי א. פרידן</span></div>
-          <div>תסריט: <span>אלימלך ויט</span></div>
-          <div>צילום: <span>רועי א. פרידן</span></div>
-          <div>עריכה: <span>נאור סרור</span></div>
-          <div>עיצוב פסקול: <span>נעמי פרנקל</span></div>
-          <div>מוזיקה מקורית: <span>אושר אלון</span></div>
-          <div>משחק: <span>יענקלה דיאמנט, מיכאל נמרוד פלד</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: Aveda -->
-  <div class="modal-overlay" id="modal-aveda" onclick="if(event.target===this)closeModal('aveda')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('aveda')">✕</button>
-      <div class="modal-info" style="padding-top:2.5rem">
-        <div class="modal-title">אבדה</div>
-        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בפוסט</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>בימוי: <span>יהודה עייאש</span></div>
-          <div>תסריט: <span>אליה טרוס ויהודה עייאש</span></div>
-          <div>צילום: <span>רועי א. פרידן</span></div>
-          <div>עריכה: <span>יהודה עייאש</span></div>
-          <div>עיצוב פסקול: <span>נעמי פרנקל</span></div>
-          <div>מוזיקה מקורית: <span>נעמי פרנקל</span></div>
-          <div>משחק: <span>ענר קדם, הילה הרוש, נופר כרמי, אדם שוורץ</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- MODAL: שש תמונות לרצח -->
-  <div class="modal-overlay" id="modal-shesh" onclick="if(event.target===this)closeModal('shesh')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('shesh')">✕</button>
-      <div class="modal-video" id="video-shesh"></div>
-      <div class="modal-info">
-        <div class="modal-title">שש תמונות לרצח</div>
-        <div class="modal-meta">עלילתי · 2020 · 50 דקות · הופץ</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>בימוי: <span>יובל בר-און</span></div>
-          <div>תסריט: <span>רון פרסלר</span></div>
-          <div>צילום: <span>יניב דואק</span></div>
-          <div>עריכה: <span>עינב וייסברג</span></div>
-          <div>עיצוב פסקול: <span>אילן אדמון</span></div>
-          <div>משחק: <span>אריאל קריזופולסקי, מרינה איבנובה</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: חי ונעלם -->
-  <div class="modal-overlay" id="modal-hai" onclick="if(event.target===this)closeModal('hai')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('hai')">✕</button>
-      <div class="modal-info" style="padding-top:2.5rem">
-        <div class="modal-title">חי ונעלם</div>
-        <div class="modal-meta">עלילתי · 2023 · 15 דקות · בהפצה</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>תסריט ובימוי: <span>ניר מימרן</span></div>
-          <div>צילום: <span>שי טריינין</span></div>
-          <div>עיצוב אמנותי: <span>שירה ירמיהו</span></div>
-          <div>עריכה: <span>תומר אבנד</span></div>
-          <div>עיצוב פסקול: <span>קרן אור ביטון</span></div>
-          <div>משחק: <span>משה חבושה, אמיר טסלר</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: חלקים כהים -->
-  <div class="modal-overlay" id="modal-halakhim" onclick="if(event.target===this)closeModal('halakhim')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('halakhim')">✕</button>
-      <div class="modal-video" id="video-halakhim"></div>
-      <div class="modal-info">
-        <div class="modal-title">חלקים כהים</div>
-        <div class="modal-meta">אנימציה · 2023 · 7 דקות · בהפצה</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>תסריט, בימוי, עיצוב אמנותי ועריכה: <span>עמית קרני</span></div>
-          <div>עיצוב פסקול: <span>עדי בר</span></div>
-          <div>אפטריסט: <span>גיל שלום</span></div>
-          <div>מוזיקה מקורית: <span>נעם זגורי</span></div>
-          <div>משחק: <span>מרים איבנוב</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: פשוט נעלם -->
-  <div class="modal-overlay" id="modal-pashut" onclick="if(event.target===this)closeModal('pashut')">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('pashut')">✕</button>
-      <div class="modal-video" id="video-pashut"></div>
-      <div class="modal-info">
-        <div class="modal-title">פשוט נעלם</div>
-        <div class="modal-meta">עלילתי · 2022 · 25 דקות · הופץ</div>
-        <div class="modal-credits">
-          <div>הפקה: <span>יהודה עייאש</span></div>
-          <div>תסריט ובימוי: <span>עביר ראשד</span></div>
-          <div>צילום: <span>שרון זריהם</span></div>
-          <div>עיצוב אמנותי: <span>שחר משה</span></div>
-          <div>עריכה: <span>יובל לוגר</span></div>
-          <div>עיצוב פסקול: <span>חן גוסלר</span></div>
-          <div>מוזיקה מקורית: <span>גלית וושדי</span></div>
-          <div>משחק: <span>האלא שחוק, עואטף קדורה, הילאל כבוב, סנא ראשד</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
