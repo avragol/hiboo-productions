@@ -866,7 +866,7 @@
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/6338baad9_05_ein_shum_yiush.jpg" alt="תמונה מהסרט "אין ייאוש"" loading="lazy" /></div>
         <div class="project-info">
           <h3>אין ייאוש</h3>
-          <div class="project-meta">עלילתי · 2026 · 12 דקות · <span class="project-status status-post">בפוסט</span></div>
+          <div class="project-meta">עלילתי · 2026 · 12 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">יונה, בחור ישיבה בן 17, עומד בכותל ומתחנן שיעזור לו להפסיק להימשך לגברים. שם הוא פוגש את אריה — שמנסה לעודד אותו, אך גם מעמיד אותו בניסיון.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">בימוי: רועי א. פרידן</span>
@@ -880,7 +880,7 @@
         <div class="project-thumb"><img src="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/2dad92e35_06_aveda.png" alt="תמונה מהסרט "אבדה"" loading="lazy" /></div>
         <div class="project-info">
           <h3>אבדה</h3>
-          <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-post">בפוסט</span></div>
+          <div class="project-meta">עלילתי · 2026 · 15 דקות · <span class="project-status status-distributed">בהפצה</span></div>
           <div class="project-desc">במהלך טיול מדברי, יוחאי מאבד את התפילין שלו ומפרש זאת כעונש משמיים. הוא יוצא לחפש אותן במעמקי השממה — בזמן ששיטפון הרסני מאיים על חייו.</div>
           <div class="about-tags" style="margin-top:0.8rem">
             <span class="tag">תסריט ובימוי: יהודה עייאש</span>
@@ -1112,11 +1112,20 @@
       pashut: 'hIQHmfkVqkM'
     };
 
+    // Vimeo trailers: { id: 'vimeo_id/hash' }
+    const VIMEO_TRAILERS = {
+      aveda: '1195321808/d18f513c83'
+    };
+
     function openModal(id) {
       const overlay = document.getElementById('modal-' + id);
       const videoDiv = document.getElementById('video-' + id);
-      if (videoDiv && TRAILERS[id]) {
-        videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      if (videoDiv) {
+        if (VIMEO_TRAILERS[id]) {
+          videoDiv.innerHTML = '<iframe src="https://player.vimeo.com/video/' + VIMEO_TRAILERS[id] + '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+        } else if (TRAILERS[id]) {
+          videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        }
       }
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1277,7 +1286,7 @@
       <button class="modal-close" onclick="closeModal('einYiush')">✕</button>
       <div class="modal-info" style="padding-top:2.5rem">
         <div class="modal-title">אין ייאוש</div>
-        <div class="modal-meta">עלילתי · 2026 · 12 דקות · בפוסט</div>
+        <div class="modal-meta">עלילתי · 2026 · 12 דקות · בהפצה</div>
         <div class="modal-credits">
           <div>הפקה: <span>יהודה עייאש</span></div>
           <div>בימוי: <span>רועי א. פרידן</span></div>
@@ -1296,9 +1305,10 @@
   <div class="modal-overlay" id="modal-aveda" onclick="if(event.target===this)closeModal('aveda')">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('aveda')">✕</button>
-      <div class="modal-info" style="padding-top:2.5rem">
+      <div class="modal-video" id="video-aveda"></div>
+      <div class="modal-info">
         <div class="modal-title">אבדה</div>
-        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בפוסט</div>
+        <div class="modal-meta">עלילתי · 2026 · 15 דקות · בהפצה</div>
         <div class="modal-credits">
           <div>הפקה: <span>יהודה עייאש</span></div>
           <div>בימוי: <span>יהודה עייאש</span></div>
