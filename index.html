@@ -36,6 +36,7 @@
   <meta name="author" content="יהודה עייאש" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0a0a0a" />
+    <script src="https://nagish.co.il/widget/nagish.js" defer></script>
   <title>יהודה עייאש | HIBOO Productions — מפיק ועורך קולנוע</title>
   <link rel="preload" as="image" href="https://base44.app/api/apps/69b94c39dc1f32607c30c73a/files/mp/public/69b94c39dc1f32607c30c73a/ce14e05f2_hero_bg.jpg" fetchpriority="high" />
   <!-- Structured Data -->
@@ -82,6 +83,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <style>
+    
+    /* ── ACCESSIBILITY: focus styles ── */
+    :focus-visible {
+      outline: 2px solid #c9a84c;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -1088,6 +1096,8 @@
       <a href="https://www.youtube.com/@yehudaaiache2726" target="_blank" rel="noopener">YouTube</a>
     </div>
     © 2026 HIBOO Productions · יהודה עייאש · כל הזכויות שמורות
+  
+    <p style="margin-top:0.75rem;font-size:0.78rem;color:#666;"><a href="/accessibility.html" style="color:#888;text-decoration:underline;margin-left:1rem;">הצהרת נגישות</a><a href="/privacy.html" style="color:#888;text-decoration:underline;">מדיניות פרטיות</a></p>
   </footer>
 
   <script>
@@ -1387,5 +1397,25 @@
     </div>
   </div>
 
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#111;color:#e8e8e8;padding:1rem 1.5rem;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid #2a2a2a;">
+    <p style="margin:0;font-size:0.85rem;line-height:1.5;">
+      אתר זה משתמש בעוגיות (Cookies) לצרכי ניתוח תנועה באמצעות Google Analytics.
+      <a href="/privacy.html" style="color:#c9a84c;text-decoration:underline;">מדיניות הפרטיות</a>
+    </p>
+    <button onclick="acceptCookies()" style="background:#c9a84c;color:#000;border:none;padding:0.5rem 1.2rem;border-radius:4px;cursor:pointer;font-size:0.85rem;font-weight:600;white-space:nowrap;">אישור</button>
+  </div>
+  <script>
+    function acceptCookies() {
+      localStorage.setItem('cookies_accepted', '1');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+    (function() {
+      if (!localStorage.getItem('cookies_accepted')) {
+        document.getElementById('cookie-banner').style.display = 'flex';
+      }
+    })();
+  </script>
 </body>
 </html>
