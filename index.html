@@ -1103,6 +1103,7 @@
   <script>
 
     const TRAILERS = {
+      aveda: 'zuexi4XlURc',
       boker: 'PDKQM-wYCyE',
       heartbreak: 'sfGTjqVFsNE',
       kinat: '77DqJeD2ils',
@@ -1112,20 +1113,11 @@
       pashut: 'hIQHmfkVqkM'
     };
 
-    // Vimeo trailers: { id: 'vimeo_id/hash' }
-    const VIMEO_TRAILERS = {
-      aveda: '1195321808/d18f513c83'
-    };
-
     function openModal(id) {
       const overlay = document.getElementById('modal-' + id);
       const videoDiv = document.getElementById('video-' + id);
-      if (videoDiv) {
-        if (VIMEO_TRAILERS[id]) {
-          videoDiv.innerHTML = '<iframe src="https://player.vimeo.com/video/' + VIMEO_TRAILERS[id] + '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
-        } else if (TRAILERS[id]) {
-          videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-        }
+      if (videoDiv && TRAILERS[id]) {
+        videoDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + TRAILERS[id] + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
       }
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
